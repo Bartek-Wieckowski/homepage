@@ -10,8 +10,13 @@ h1 {
     color: rgb(12, 12, 12);
 }
 
-p {
-    color: rgb(216, 23, 39);
+.paragraph {
+    background-color: rgb(216, 23, 39);
+    text-decoration-style: dotted;
+    color: #000;
+}
+p{
+    color: #014e0c
 }
 
 h2 {
@@ -37,7 +42,7 @@ h3 {
 }
 
 a {
-    color: red;
+    color: blueviolet;
 }
 
 nav a {

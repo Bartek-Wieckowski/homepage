@@ -13,9 +13,9 @@
 <body>
 
     <header>
-        <nav class="navigation__all">
+        <nav class="navigation-all">
             <a href="index.html">Strona główna</a>
-            <a href="nauka-html.html">Mój BrudnopisL</a>
+            <a href="nauka-html.html">Mój Brudnopis</a>
             <a href="tydzien1-5.html">Tydzień 1-5</a>
             <a href="tydzien5-10.html">Tydzień 5-10</a>
             <a href="tydzien10-15.html">Tydzień 10-15</a>
@@ -30,12 +30,31 @@
         </header>
 
 
+        <section id="BEM">
+            <h2 class="secondary-header">Czy wyjdzie mi tu bem?</h2>
+            <article class="learn-bem">
+                <h3 class="third-header">Tak wygłada BEM</h3>
+                <div class="polska">POLSKA
+                    <div class="polska__provinces">
+                        Województwa
+                        <div class="polska__provinces--example">
+                            Mazowieckie<br />
+                            Podlaskie
+                        </div>
+                    </div>
 
+
+                </div>
+
+
+            </article>
+
+        </section>
         <section id="notatki">
             <h3 class="title-notebook">Notatki z WTF: Co ten Frontend?</h3>
             <article>
-                <h3 class="third-header"><img src="arrow.jpg" width="25px" ; height="15px" />Notatki z tygodnia </h3>
-                <p>WTF?<br />
+                <h3 class="third-header"><img class="arrow" src="arrow.jpg" alt="strzałka" />Notatki z tygodnia </h3>
+                <p>Nauka BEMA na gorze<br />
                     <br />
                     <br />
                     <br />
@@ -44,8 +63,9 @@
 
 
             <article>
-                <h3 class="third-header"><img src="arrow.jpg" width="25px" ; height="15px" />Prace domowe </h3>
-                <p class="paragraph-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis dignissim viverra. Fusce auctor
+                <h3 class="third-header"><img class="arrow" src="arrow.jpg" alt="strzałka" />Prace domowe </h3>
+                <p class="paragraph-article">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis
+                    dignissim viverra. Fusce auctor
                     erat quis nisl rhoncus blandit. Ut fermentum viverra purus, sed cursus diam imperdiet ac. Sed mauris
                     mauris, tempus vel feugiat quis, sollicitudin et orci. Sed ac nunc et eros facilisis mattis ut et
                     eros. Suspendisse id varius justo. Vestibulum fermentum elit vel felis blandit lobortis. Sed eu
@@ -64,7 +84,7 @@
                     fringilla neque dapibus finibus.</p>
             </article>
             <article>
-                <h3 class="third-header"><img src="arrow.jpg" width="25px" ; height="15px" />Prace domowe </h3>
+                <h3 class="third-header"><img class="arrow" src="arrow.jpg" alt="strzałka" />Prace domowe </h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis dignissim viverra. Fusce auctor
                     erat quis nisl rhoncus blandit. Ut fermentum viverra purus, sed cursus diam imperdiet ac. Sed mauris
                     mauris, tempus vel feugiat quis, sollicitudin et orci. Sed ac nunc et eros facilisis mattis ut et
@@ -84,7 +104,7 @@
                     fringilla neque dapibus finibus.</p>
             </article>
             <article>
-                <h3 class="third-header"><img src="arrow.jpg" width="25px" ; height="15px" />Prace domowe </h3>
+                <h3 class="third-header"><img class="arrow" src="arrow.jpg" alt="strzałka" />Prace domowe </h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis dignissim viverra. Fusce auctor
                     erat quis nisl rhoncus blandit. Ut fermentum viverra purus, sed cursus diam imperdiet ac. Sed mauris
                     mauris, tempus vel feugiat quis, sollicitudin et orci. Sed ac nunc et eros facilisis mattis ut et
@@ -104,7 +124,7 @@
                     fringilla neque dapibus finibus.</p>
             </article>
             <article>
-                <h3 class="third-header"><img src="arrow.jpg" width="25px" ; height="15px" />Prace domowe </h3>
+                <h3 class="third-header"><img class="arrow" src="arrow.jpg" alt="strzałka" />Prace domowe </h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis mattis dignissim viverra. Fusce auctor
                     erat quis nisl rhoncus blandit. Ut fermentum viverra purus, sed cursus diam imperdiet ac. Sed mauris
                     mauris, tempus vel feugiat quis, sollicitudin et orci. Sed ac nunc et eros facilisis mattis ut et
@@ -130,7 +150,8 @@
 
     </main>
     <footer class="footer">
-        Bartek Więckowski 2020 krok po korku do bycia w świecie IT! <a href="#top">Wróć na górę strony</a>
+        Bartek Więckowski 2020 krok po korku do bycia w świecie IT! <a class="move-top" href="#top">Wróć na górę
+            strony</a>
     </footer>
     <script src="alert.js"></script>
 </body>

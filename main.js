@@ -8,4 +8,4 @@ console.log(name);
 console.log(age);
 console.log(surname);
 
-alert("Wszystkiego da sie nauczyć!");
+

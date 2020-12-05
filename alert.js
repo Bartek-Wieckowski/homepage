@@ -1,0 +1,1 @@
+alert("Wszystkiego da sie nauczyć!");

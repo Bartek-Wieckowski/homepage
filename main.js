@@ -8,9 +8,13 @@ console.log(name);
 console.log(age);
 console.log(surname);
 
-const paragraph = document.querySelector('.paragraph-who-im--js');
-console.log(paragraph.innerHTML);
+const article = document.querySelector(".exercise-DOM--js");
+console.log(article.innerHTML);
 
-paragraph.innerHTML = `No byl opis ale przez JS jest inny hehe`;
+article.innerHTML = `Za pomocą JavaScriptu ten tekst własnie ukazuje sie w Waszym oczom. 
+W kodzie HTML w tej cześci strony zupełnie nie ma tu nic wartościowego :). 
+Jak rownież ten artykuł w HTML i CSS jest inaczej wystylizowany, ale JavaScript robi po swojemu :D`;
 
-console.log(paragraph);
+console.log(article);
+
+

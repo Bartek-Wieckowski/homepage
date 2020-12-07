@@ -125,32 +125,32 @@ a {
   color: yellowgreen;
   padding: 10px;
 }
-.BEM__section{
+.section{
   width: 400px;
   min-height: 400px;
   margin: auto;
   background-color: thistle;
   color:black;
 }
-.BEM__section--main-header{
+.section__main-header{
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
   color: #fefefe;
   text-align: center;
 }
-.BEM__section--article{
+.article{
   border: 3px solid #000;
   background-color: #052f97;
   color: #f80808
 }
-.BEM__section--article-author{
+.article__author{
   font-size: 10px;
   color:rgb(229, 255, 0);
   display: inline;
   margin-left: 40px;
   margin-right: 250px
 }
-.BEM__section--article-data{
+.article__data{
   font-size: 10px;
   color:rgb(229, 255, 0);
   display: inline;

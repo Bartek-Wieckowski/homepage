@@ -18,3 +18,9 @@ Jak rownież ten artykuł w HTML i CSS jest inaczej wystylizowany, ale JavaScrip
 console.log(article);
 
 
+function calculated(myNumber) {
+    console.log(`Dostałem ${myNumber}`);
+    return myNumber*7;
+  }
+  const myResult = calculated(1);
+  console.log(myResult);

@@ -1,22 +1,7 @@
-
-
-const humanOne = {
-    name: 'Maciek',
-    age: 32,
-    dupa: 'twoja dupa',
+function calculate(myNumber1, myNumber2) {
+    const myResult = myNumber1 * myNumber2;
+    return myResult;
 }
-
-const humanTwo = {
-    name: 'Stefan',
-    age: humanOne.age,
-    dupa: 'twoja dupa',
-}
+console.log(calculate(78, 94));
 
 
-console.log(humanTwo);
-console.log(humanOne);
-
-humanOne.age = 44;
-
-console.log(humanTwo);
-console.log(humanOne);

@@ -18,9 +18,31 @@ Jak rownież ten artykuł w HTML i CSS jest inaczej wystylizowany, ale JavaScrip
 console.log(article);
 
 
-function calculated(myNumber) {
-    console.log(`Dostałem ${myNumber}`);
-    return myNumber*7;
-  }
-  const myResult = calculated(1);
-  console.log(myResult);
+let guestName = "Bartek";
+const guestAge = "18";
+
+
+function welcome(guestName, guestAge){
+console.log(`Witaj ${guestName} masz ${guestAge} lat?`);
+  
+}
+welcome("Bartek", 18);
+
+function hello(querySelectorHello, helloBlock) {
+const rectangle = document.querySelector(querySelectorHello);
+rectangle.innerHTML = helloBlock;
+
+}
+hello(`.welcome__guest--js`, 'Witaj Witaj drogi odwiedzający');
+
+
+const date = (date, text) => {
+  console.log(`Twoja randka odbędzie się ${date} ${text}`);
+
+}
+date(11.03,  'Czy jestes gotowy?');
+
+
+const calculate = (myNumber) => myNumber+10;
+const result = calculate(10);
+console.log(result);

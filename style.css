@@ -11,6 +11,19 @@ body {
 section {
   background-color: #8ba8f1;
 }
+.welcome{
+  background-color: #020c27;
+  width: 400px;
+  min-height: 50px;
+}
+.welcome__guest--js{
+  color: white;
+  font-size: 16px;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-transform: uppercase;
+
+}
 #header-top {
   text-align: center;
   text-transform: uppercase;

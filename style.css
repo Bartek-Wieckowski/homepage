@@ -1,6 +1,7 @@
 body {
-  background-color: #a7bbec;
-  
+  background: rgb(70,64,181);
+background: linear-gradient(90deg, rgba(70,64,181,1) 7%, rgba(9,9,121,1) 24%, rgba(0,212,255,1) 54%);
+
 }
 .main__centered{
   width: 1000px;
@@ -10,6 +11,9 @@ body {
 
 section {
   background-color: #8ba8f1;
+}
+.aboutme{
+  
 }
 .welcome{
   background-color: #020c27;
@@ -82,7 +86,14 @@ a {
   width: 1000px;
   text-align: center;
   padding: 10px;
-  margin: auto;
+  
+}
+.flexbox{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+
 }
 .navigation-all:hover {
   background-color: rgb(147, 192, 147);

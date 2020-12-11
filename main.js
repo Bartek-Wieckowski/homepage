@@ -46,3 +46,21 @@ date(11.03,  'Czy jestes gotowy?');
 const calculate = (myNumber) => myNumber+10;
 const result = calculate(10);
 console.log(result);
+
+const greet = {
+    nickname: "Kelt",
+    number: 30,
+    leader: {
+      description: "TheBesciak",
+      level: 100,
+      weapon: "railgun",
+    }
+
+
+}
+console.log(greet);
+console.log(greet.leader.weapon);
+console.log(greet.nickname);
+console.log(greet.number);
+
+console.log(`Witaj ${greet.nickname} czy masz ${greet.number} lat?`);

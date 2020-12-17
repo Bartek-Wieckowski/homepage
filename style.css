@@ -1,11 +1,7 @@
 body {
-  background: rgb(70, 64, 181);
-  background: linear-gradient(
-    90deg,
-    rgba(70, 64, 181, 1) 7%,
-    rgba(9, 9, 121, 1) 24%,
-    rgba(0, 212, 255, 1) 54%
-  );
+  background-color: #8a979c;
+  background-image: linear-gradient(14deg, #8a979c 0%, #24242b 100%);
+  
   margin: 0;
 }
 .flexbox {
@@ -36,7 +32,7 @@ body {
   font-size: 16px;
 }
 .welcome {
-  background-color: #020c27;
+  background-color: rgb(32, 6, 32);
   width: 400px;
   min-height: 50px;
 }

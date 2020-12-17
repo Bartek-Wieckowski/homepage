@@ -6,6 +6,7 @@ body {
     rgba(9, 9, 121, 1) 24%,
     rgba(0, 212, 255, 1) 54%
   );
+  margin: 0;
 }
 .flexbox {
   display: flex;
@@ -48,8 +49,18 @@ body {
   text-transform: uppercase;
   padding: 10px;
 }
-
 section {
+}
+.section {
+  min-height: 400px;
+  margin: auto;
+  color: black;
+}
+.section__main-header {
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fefefe;
+  text-align: center;
 }
 .aboutMe {
   background-color: #8ba8f1;
@@ -57,7 +68,6 @@ section {
 .topic {
   background-color: #8ba8f1;
 }
-
 .paragraph__aboutMe {
   background-color: rgb(216, 23, 39);
   color: #000;
@@ -67,6 +77,10 @@ section {
   color: #014e0c;
   background-color: #4a78ec;
   text-align: justify;
+}
+.article {
+  border: 3px solid #000;
+  background-color: #052f97;
 }
 .how__create-html {
 }
@@ -80,14 +94,12 @@ section {
 .third-header {
   color: #ffffff;
 }
-
 .title-notebook {
   font-size: 24px;
   font-style: oblique;
   color: #c52525;
   text-align: center;
 }
-
 a {
   color: rgb(13, 13, 14);
   border-right: 2px solid #c52525;
@@ -104,7 +116,6 @@ a {
   color: yellow;
   border: 2px solid #fefefe;
 }
-
 .ja {
   width: 300px;
   height: 150px;
@@ -123,41 +134,9 @@ a {
   padding: 10px;
   margin: auto;
 }
-
 .exercise-DOM {
   background-color: rgb(32, 6, 32);
   font-size: 20px;
   color: yellowgreen;
   padding: 10px;
-}
-.section {
-  width: 400px;
-  min-height: 400px;
-  margin: auto;
-  background-color: thistle;
-  color: black;
-}
-.section__main-header {
-  font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
-  color: #fefefe;
-  text-align: center;
-}
-.article {
-  border: 3px solid #000;
-  background-color: #052f97;
-  color: #f80808;
-}
-.article__author {
-  font-size: 10px;
-  color: rgb(229, 255, 0);
-  display: inline;
-  margin-left: 40px;
-  margin-right: 250px;
-}
-.article__data {
-  font-size: 10px;
-  color: rgb(229, 255, 0);
-  display: inline;
-  text-align: left;
 }

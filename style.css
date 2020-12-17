@@ -1,32 +1,32 @@
 body {
-  background: rgb(70,64,181);
-background: linear-gradient(90deg, rgba(70,64,181,1) 7%, rgba(9,9,121,1) 24%, rgba(0,212,255,1) 54%);
-
+  background: rgb(70, 64, 181);
+  background: linear-gradient(
+    90deg,
+    rgba(70, 64, 181, 1) 7%,
+    rgba(9, 9, 121, 1) 24%,
+    rgba(0, 212, 255, 1) 54%
+  );
 }
-.main__centered{
+.flexbox {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.navigation__all {
+  border-radius: 30%;
+  background-color: green;
+  width: 1000px;
+  text-align: center;
+  padding: 10px;
+}
+.navigation__all:hover {
+  background-color: rgb(147, 192, 147);
+}
+.main__centered {
   width: 1000px;
   min-height: 1000px;
   margin: auto;
-}
-
-section {
-  background-color: #8ba8f1;
-}
-.aboutme{
-  
-}
-.welcome{
-  background-color: #020c27;
-  width: 400px;
-  min-height: 50px;
-}
-.welcome__guest--js{
-  color: white;
-  font-size: 16px;
-  text-align: center;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
-  text-transform: uppercase;
-
 }
 #header-top {
   text-align: center;
@@ -34,24 +34,49 @@ section {
   font-family: "Times New Roman", Times, serif;
   font-size: 16px;
 }
+.welcome {
+  background-color: #020c27;
+  width: 400px;
+  min-height: 50px;
+}
+.welcome__guest--js {
+  background-color: rgb(32, 6, 32);
+  color: yellowgreen;
+  font-size: 20px;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  text-transform: uppercase;
+  padding: 10px;
+}
 
-.paragraph-who-im {
+section {
+}
+.aboutMe {
+  background-color: #8ba8f1;
+}
+.topic {
+  background-color: #8ba8f1;
+}
+
+.paragraph__aboutMe {
   background-color: rgb(216, 23, 39);
   color: #000;
   text-align: center;
 }
-.paragraph-article {
+.paragraph__article {
   color: #014e0c;
   background-color: #4a78ec;
   text-align: justify;
 }
-
+.how__create-html {
+}
+.why__programming {
+}
 .secondary-header {
   color: #c52525;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
 .third-header {
   color: #ffffff;
 }
@@ -80,34 +105,15 @@ a {
   border: 2px solid #fefefe;
 }
 
-.navigation-all {
-  border-radius: 30%;
-  background-color: green;
-  width: 1000px;
-  text-align: center;
-  padding: 10px;
-  
-}
-.flexbox{
-  display:flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
-
-}
-.navigation-all:hover {
-  background-color: rgb(147, 192, 147);
-}
-
 .ja {
   width: 300px;
   height: 150px;
   border: 3px dotted #c7db12;
   border-radius: 50px;
 }
-.arrow{
-    width: 25px; 
-    height: 15px;
+.arrow {
+  width: 25px;
+  height: 15px;
 }
 .footer {
   border-radius: 30%;
@@ -117,66 +123,41 @@ a {
   padding: 10px;
   margin: auto;
 }
-.polska {
-  background-color: red;
-  width: 500px;
-  height: 500px;
-  color: white;
-  text-align: center;
-  font-size: 24px;
-}
-.polska__provinces {
-  background-color: white;
-  width: 350px;
-  height: 350px;
-  color: black;
-  text-align: right;
-  font-size: 18px;
-  padding-top: 30px;
-}
-.polska__provinces--example {
-  background-color: black;
-  width: 100px;
-  height: 100px;
-  color: yellow;
-  text-align: left;
-  font-size: 12px;
-  padding-top: 30px;
-}
-.exercise-DOM{
+
+.exercise-DOM {
   background-color: rgb(32, 6, 32);
   font-size: 20px;
   color: yellowgreen;
   padding: 10px;
 }
-.section{
+.section {
   width: 400px;
   min-height: 400px;
   margin: auto;
   background-color: thistle;
-  color:black;
+  color: black;
 }
-.section__main-header{
+.section__main-header {
   font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
   color: #fefefe;
   text-align: center;
 }
-.article{
+.article {
   border: 3px solid #000;
   background-color: #052f97;
-  color: #f80808
+  color: #f80808;
 }
-.article__author{
+.article__author {
   font-size: 10px;
-  color:rgb(229, 255, 0);
+  color: rgb(229, 255, 0);
   display: inline;
   margin-left: 40px;
-  margin-right: 250px
+  margin-right: 250px;
 }
-.article__data{
+.article__data {
   font-size: 10px;
-  color:rgb(229, 255, 0);
+  color: rgb(229, 255, 0);
   display: inline;
   text-align: left;
 }

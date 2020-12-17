@@ -1,1 +1,1 @@
-alert("Wszystkiego da sie nauczyć!");
+//alert("Wszystkiego da sie nauczyć!");

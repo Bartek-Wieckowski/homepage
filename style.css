@@ -1,8 +1,10 @@
 body {
   background-color: #8a979c;
   background-image: linear-gradient(14deg, #8a979c 0%, #24242b 100%);
-  
-  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 .flexbox {
   display: flex;
@@ -13,7 +15,7 @@ body {
 .navigation__all {
   border-radius: 30%;
   background-color: green;
-  width: 1000px;
+  width: 100vh;
   text-align: center;
   padding: 10px;
 }
@@ -25,21 +27,38 @@ body {
   /*min-height: 1000px;*/
   margin: auto;
   display: grid;
-  grid-template-areas: "welcome header-top aboutMe"
-                        ". . ."
-                        "topic topic topic"
-                        "footer footer footer";
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 200px 163px 400px 100px;
+  grid-template-areas:
+    "header-top header-top"
+    "aboutMe topic"
+    "welcome welcome";
+
+  grid-template-columns: 300px 700px;
+  grid-template-rows: 150px 517px 150px;
+  column-gap: 16px;
+  row-gap: 10px;
+}
+.main__centered-two {
+  width: 1000px;
+  /*min-height: 1000px;*/
+  margin: auto;
+  display: grid;
+  grid-template-areas:
+    "header-top header-top"
+    "section section";
+  grid-template-columns: 300px 700px;
+  grid-template-rows: 150px 517px 150px;
+  column-gap: 16px;
 }
 .header-top {
+  margin-top: 20px;
   text-align: center;
   text-transform: uppercase;
   font-family: "Times New Roman", Times, serif;
   font-size: 16px;
   grid-area: header-top;
-  grid-column-start: 2;
+  grid-column-start: 1;
   grid-column-end: 3;
+  grid-row-start: 1;
 }
 .welcome {
   background-color: rgb(32, 6, 32);
@@ -47,8 +66,7 @@ body {
   min-height: 50px;
   grid-area: welcome;
   grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-end: 3;
+  grid-row-start: 3;
 }
 .welcome__guest--js {
   background-color: rgb(32, 6, 32);
@@ -63,8 +81,12 @@ section {
 }
 .section {
   min-height: 400px;
-  margin: auto;
+
   color: black;
+  grid-area: section;
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 2;
 }
 .section__main-header {
   font-size: 20px;
@@ -75,24 +97,28 @@ section {
 .aboutMe {
   background-color: #8ba8f1;
   grid-area: aboutMe;
-  grid-column-start: 3;
-  grid-column-end: 4;
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 2;
 }
 .topic {
   background-color: #8ba8f1;
   grid-area: topic;
-  grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column-start: 2;
+  grid-column-end: 2;
+  grid-row-start: 2;
 }
 .paragraph__aboutMe {
   background-color: rgb(216, 23, 39);
   color: #000;
   text-align: center;
+  padding: 10px;
 }
 .paragraph__article {
   color: #014e0c;
   background-color: #4a78ec;
   text-align: justify;
+  padding: 10px;
 }
 .article {
   border: 3px solid #000;
@@ -133,10 +159,11 @@ a {
   border: 2px solid #fefefe;
 }
 .ja {
-  width: 50%;
-  height: 50%;
+  width: 40vh;
   border: 3px dotted #c7db12;
   border-radius: 50px;
+  display: flex;
+  align-items: center;
 }
 .arrow {
   width: 25px;
@@ -146,13 +173,9 @@ a {
   border-radius: 30%;
   background-color: green;
   /*width: 1000px;*/
+  width: 100vh;
   text-align: center;
   padding: 10px;
-  margin: auto;
-  grid-area: footer;
-  grid-row-start: 4;
-  grid-row-end: 4;
-  
 }
 .exercise-DOM {
   background-color: rgb(32, 6, 32);

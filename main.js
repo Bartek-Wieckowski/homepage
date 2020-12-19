@@ -17,47 +17,38 @@ Jak rownież ten artykuł w HTML i CSS jest inaczej wystylizowany, ale JavaScrip
 
 console.log(article);
 
-
 let guestName = "Bartek";
 const guestAge = "18";
 
-
-function welcome(guestName, guestAge){
-console.log(`Witaj ${guestName} masz ${guestAge} lat?`);
-  
+function welcome(guestName, guestAge) {
+  console.log(`Witaj ${guestName} masz ${guestAge} lat?`);
 }
 welcome("Bartek", 18);
 
 function hello(querySelectorHello, helloBlock) {
-const rectangle = document.querySelector(querySelectorHello);
-rectangle.innerHTML = helloBlock;
-
+  const rectangle = document.querySelector(querySelectorHello);
+  rectangle.innerHTML = helloBlock;
 }
-hello(`.welcome__guest--js`, 'Witaj Witaj drogi odwiedzający');
-
+hello(`.welcome__guest--js`, "Witaj Witaj drogi odwiedzający");
 
 const date = (date, text) => {
   console.log(`Twoja randka odbędzie się ${date} ${text}`);
+};
+date(11.03, "Czy jestes gotowy?");
 
-}
-date(11.03,  'Czy jestes gotowy?');
-
-
-const calculate = (myNumber) => myNumber+10;
+const calculate = (myNumber) => myNumber + 10;
 const result = calculate(10);
 console.log(result);
 
 const greet = {
-    nickname: "Kelt",
-    number: 30,
-    leader: {
-      description: "TheBesciak",
-      level: 100,
-      weapon: "railgun",
-    }
-
-
-}
+  nickname: "Kelt",
+  number: 30,
+  leader: {
+    description: "TheBesciak",
+    level: 100,
+    weapon: "railgun",
+  },
+};
 console.log(greet);
 console.log(greet.leader.weapon);
 console.log(greet.nickname);

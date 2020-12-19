@@ -1,10 +1,6 @@
 body {
   background-color: #8a979c;
   background-image: linear-gradient(14deg, #8a979c 0%, #24242b 100%);
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 .flexbox {
   display: flex;
@@ -135,6 +131,7 @@ section {
 }
 .third-header {
   color: #ffffff;
+  padding: 10px;
 }
 .title-notebook {
   font-size: 24px;
@@ -176,10 +173,76 @@ a {
   width: 100vh;
   text-align: center;
   padding: 10px;
+  margin: auto;
 }
 .exercise-DOM {
   background-color: rgb(32, 6, 32);
   font-size: 20px;
   color: yellowgreen;
   padding: 10px;
+}
+
+@media screen and (max-width: 320px) {
+  body {
+    background-color: #8a979c;
+    background-image: linear-gradient(14deg, #ac6911 0%, #24242b 100%);
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .navigation__all {
+    border-radius: 30%;
+    background-color: green;
+    width: 320px;
+    text-align: center;
+    padding: 10px;
+  }
+  .navigation__all:hover {
+    background-color: rgb(147, 192, 147);
+  }
+  .main__centered {
+    margin: auto;
+    display: grid;
+    grid-template-areas:
+      "header-top"
+      "aboutMe"
+      "topic"
+      "welcome ";
+    grid-template-columns: 320px;
+    grid-template-rows: 320px;
+    row-gap: 10px;
+  }
+  .header-top {
+    grid-area: header-top;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    color: khaki;
+    padding: 5px;
+  }
+  .aboutMe {
+    grid-area: aboutMe;
+    grid-column-start: 1;
+    grid-row-start: 2;
+  }
+  .topic {
+    grid-area: topic;
+    grid-column-start: 1;
+    grid-row-start: 3;
+  }
+  .welcome {
+    grid-area: welcome;
+    grid-column-start: 1;
+    grid-row-start: 4;
+  }
+  .main__centered-two {
+    margin: auto;
+    display: grid;
+    grid-template-areas:
+      "header-top"
+      "section";
+    grid-template-columns: 320px;
+    grid-template-rows: 320px;
+    row-gap: 10px;
+  }
 }

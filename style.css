@@ -156,11 +156,12 @@ a {
   border: 2px solid #fefefe;
 }
 .ja {
-  width: 40vh;
+  width: 90%;
   border: 3px dotted #c7db12;
   border-radius: 50px;
   display: flex;
   align-items: center;
+  margin: auto;
 }
 .arrow {
   width: 25px;
@@ -209,7 +210,7 @@ a {
       "aboutMe"
       "topic"
       "welcome ";
-    grid-template-columns: 320px;
+    grid-template-columns: 1fr;
     grid-template-rows: 320px;
     row-gap: 10px;
   }
@@ -224,6 +225,9 @@ a {
     grid-area: aboutMe;
     grid-column-start: 1;
     grid-row-start: 2;
+  }
+  .ja {
+    margin: auto;
   }
   .topic {
     grid-area: topic;
@@ -246,8 +250,8 @@ a {
     row-gap: 10px;
   }
 }
-
-@media screen and (min-width: 321px) and (max-width: 768px){
+/*tablet*/
+@media screen and (min-width: 321px) and (max-width: 768px) {
   body {
     background-color: #8a979c;
     background-image: linear-gradient(14deg, #d11212 0%, #24242b 100%);
@@ -274,7 +278,7 @@ a {
       "topic topic"
       "welcome welcome";
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 150px 320px;
+    grid-template-rows: 150px 1fr;
     row-gap: 10px;
   }
   .header-top {
@@ -288,6 +292,10 @@ a {
     grid-area: aboutMe;
     grid-column-start: 1;
     grid-row-start: 2;
+  }
+  .ja {
+    margin: auto;
+    width: 50vh;
   }
   .topic {
     grid-area: topic;
@@ -306,13 +314,77 @@ a {
       "header-top header-top"
       "section section";
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 150px 1fr;
+    grid-template-rows: 150px;
     row-gap: 10px;
   }
-  .footer{
+  .footer {
     width: 768px;
   }
 }
 
-
-
+/*laptop*/
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  body {
+  }
+  .main__centered {
+    margin: auto;
+    display: grid;
+    grid-template-areas:
+      "header-top header-top"
+      "aboutMe aboutMe"
+      "topic topic"
+      "welcome welcome";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 150px 320px;
+    row-gap: 10px;
+  }
+  .header-top {
+    grid-area: header-top;
+    grid-column-start: 1;
+    grid-row-start: 1;
+    color: khaki;
+    padding: 5px;
+  }
+  .aboutMe {
+    grid-area: aboutMe;
+    grid-column-start: 1;
+    grid-row-start: 2;
+    background-color: black;
+  }
+  .paragraph__aboutMe {
+    color: yellow;
+    background-color: black;
+  }
+  .paragraph__article {
+    color: yellow;
+    background-color: black;
+  }
+  .ja {
+    margin: auto;
+    width: 50vh;
+  }
+  .topic {
+    grid-area: topic;
+    grid-column-start: 1;
+    grid-row-start: 3;
+    background-color: black;
+  }
+  .welcome {
+    grid-area: welcome;
+    grid-column-start: 1;
+    grid-row-start: 4;
+  }
+  .main__centered-two {
+    margin: auto;
+    display: grid;
+    grid-template-areas:
+      "header-top header-top"
+      "section section";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 150px;
+    row-gap: 10px;
+  }
+  .footer {
+    width: 768px;
+  }
+}

@@ -55,3 +55,13 @@ console.log(greet.nickname);
 console.log(greet.number);
 
 console.log(`Witaj ${greet.nickname} czy masz ${greet.number} lat?`);
+
+const button = document.querySelector('.action--js');
+console.log(button);
+const myClick = () =>{
+  const article = document.querySelector(".welcome__guest--js");
+  article.innerHTML = `Taka Magia ale rownież WITAJ`;
+
+}
+
+button.addEventListener('click', myClick);

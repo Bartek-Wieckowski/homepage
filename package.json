@@ -4,6 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
+    "sass": "npx node-sass scss/style.scss style.css",
     "cow": "cowsay -s YEAH",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/Bartek-Wieckowski/homepage/issues"
   },
-  "homepage": "https://github.com/Bartek-Wieckowski/homepage#readme"
+  "homepage": "https://github.com/Bartek-Wieckowski/homepage#readme",
+  "devDependencies": {
+    "node-sass": "^5.0.0"
+  }
 }

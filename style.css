@@ -133,7 +133,7 @@ body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .secondary-header::before {
-  color: #0e0d0d;
+
   content:"🙂";
 }
 .third-header {

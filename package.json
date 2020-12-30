@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "sass": "npx node-sass scss/style.scss style.css",
+    "sass": "npx node-sass -w scss/style.scss style.css",
     "cow": "cowsay -s YEAH",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

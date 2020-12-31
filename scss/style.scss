@@ -194,6 +194,7 @@ body {
     border: none;
     
   }
+
   
   @media screen and (min-width: 426px) {
     body {
@@ -281,7 +282,8 @@ body {
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
-  }
+    
+    }
     .navigation__all {
       border-radius: 30%;
       background-color: green;
@@ -327,7 +329,7 @@ body {
       column-gap: 16px;
     }
     .header-top {
-      margin-top: 20px;
+      margin-top: 70px;
       text-align: center;
       text-transform: uppercase;
       font-family: "Times New Roman", Times, serif;
@@ -389,4 +391,5 @@ body {
       display: none;
     }
   }
+
   

@@ -157,7 +157,10 @@ img {
             padding: 1rem;
             text-align: center;
             background-color: var(--body-color);
+            -webkit-transition: 0.4s;
+            -o-transition: 0.4s;
             transition: 0.4s;
+            -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
             box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
             border-radius: 0 0 1rem 1rem;
             z-index: var(--z-fixed);
@@ -175,6 +178,8 @@ img {
         font-weight: var(--font-semi);
         &:hover {
             color: var(--second-color-alt);
+            -webkit-transition: 0.3s;
+            -o-transition: 0.3s;
             transition: 0.3s;
         }
     }
@@ -188,6 +193,8 @@ img {
             height: 3px;
             background-color: var(--color-alt);
             margin: 5px;
+            -webkit-transition: all 0.3s ease-out;
+            -o-transition: all 0.3s ease-out;
             transition: all 0.3s ease-out;
             border-radius: 1rem;
         }
@@ -195,12 +202,16 @@ img {
 }
 /* --**Animation toggleX*-- */
 .toggle .line1 {
+    -webkit-transform: rotate(-45deg) translate(-5px, 6px);
+    -ms-transform: rotate(-45deg) translate(-5px, 6px);
     transform: rotate(-45deg) translate(-5px, 6px);
 }
 .toggle .line2 {
     opacity: 0;
 }
 .toggle .line3 {
+    -webkit-transform: rotate(45deg) translate(-5px, -6px);
+    -ms-transform: rotate(45deg) translate(-5px, -6px);
     transform: rotate(45deg) translate(-5px, -6px);
 }
 /* --**Show Menu*-- */
@@ -221,6 +232,10 @@ img {
     }
     &__title {
         font-size: var(--h1-font-size);
+    }
+    &__description {
+        font-size: var(--small-font-size);
+        color: var(--second-color);
     }
     &__subtitle {
         margin-top: var(--mb-3);
@@ -255,7 +270,9 @@ img {
     color: var(--text-color);
     display: inline-block;
     padding: 0.75rem 1rem;
-    border-radius: 0.3rem;
+    border-radius: 0.5rem;
+    -webkit-transition: 0.3s ease;
+    -o-transition: 0.3s ease;
     transition: 0.3s ease;
     white-space: nowrap;
     &:hover {
@@ -287,6 +304,8 @@ img {
             margin-bottom: 0;
         }
         &__link {
+            -webkit-transition: 0.5s ease-in-out;
+            -o-transition: 0.5s ease-in-out;
             transition: 0.5s ease-in-out;
             &:hover {
                 color: var(--body-color);

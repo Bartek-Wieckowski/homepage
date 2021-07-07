@@ -6,7 +6,7 @@
     --height: 3rem;
 
     // colors
-    --frist-color: #12232e;
+    --first-color: #12232e;
     --second-color: #007cc7;
     --second-color-alt: #203647;
     --color-alt: #4da8da;
@@ -139,7 +139,7 @@ img {
     top: 0%;
     left: 0%;
     z-index: var(--z-fixed);
-    background-color: var(--frist-color);
+    background-color: var(--first-color);
 }
 /* --**NAV**-- */
 .nav {
@@ -204,11 +204,61 @@ img {
 }
 /* --**Show Menu*-- */
 .show-menu {
-    top: calc(1rem + var(--height));
+    top: var(--height);
 }
 /* --**HOME**-- */
+.home {
+    background-color: var(--second-color-alt);
+    height: 100vh;
+
+    &__container {
+        height: calc(100vh - var(--height));
+        align-content: center;
+    }
+    &__data {
+        margin-top: 10rem;
+        padding: 0 1rem;
+    }
+    &__title {
+        font-size: var(--h1-font-size);
+    }
+    &__subtitle {
+        margin-top: var(--mb-3);
+        margin-bottom: var(--mb-3);
+    }
+    &__img {
+        width: 300px;
+        justify-self: center;
+    }
+    &__blob {
+        width: 300px;
+        fill: var(--first-color);
+        &-img {
+            width: 200px;
+        }
+    }
+}
+/* --**SVG waves**-- */
+.wave {
+    & path {
+        stroke: none;
+        fill: var(--second-color);
+    }
+}
 
 /* --**BUTTONS**-- */
+.button {
+    background-color: var(--color-alt);
+    color: var(--text-color);
+    display: inline-block;
+    padding: 0.75rem 1rem;
+    border-radius: 0.3rem;
+    transition: 0.3s ease;
+    white-space: nowrap;
+    &:hover {
+        color: var(--first-color);
+    }
+}
 
 /* --**FOOTER**-- */
 

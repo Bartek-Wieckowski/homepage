@@ -2,7 +2,7 @@
 /* --**VARIABLES CSS**-- */
 :root {
   --height: 3rem;
-  --frist-color: #12232e;
+  --first-color: #12232e;
   --second-color: #007cc7;
   --second-color-alt: #203647;
   --color-alt: #4da8da;
@@ -138,7 +138,7 @@ img {
   top: 0%;
   left: 0%;
   z-index: var(--z-fixed);
-  background-color: var(--frist-color);
+  background-color: var(--first-color);
 }
 
 /* --**NAV**-- */
@@ -223,11 +223,72 @@ img {
 
 /* --**Show Menu*-- */
 .show-menu {
-  top: calc(1rem + var(--height));
+  top: var(--height);
 }
 
 /* --**HOME**-- */
+.home {
+  background-color: var(--second-color-alt);
+  height: 100vh;
+}
+
+.home__container {
+  height: calc(100vh - var(--height));
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
+.home__data {
+  margin-top: 10rem;
+  padding: 0 1rem;
+}
+
+.home__title {
+  font-size: var(--h1-font-size);
+}
+
+.home__subtitle {
+  margin-top: var(--mb-3);
+  margin-bottom: var(--mb-3);
+}
+
+.home__img {
+  width: 300px;
+  -ms-grid-column-align: center;
+      justify-self: center;
+}
+
+.home__blob {
+  width: 300px;
+  fill: var(--first-color);
+}
+
+.home__blob-img {
+  width: 200px;
+}
+
+/* --**SVG waves**-- */
+.wave path {
+  stroke: none;
+  fill: var(--second-color);
+}
+
 /* --**BUTTONS**-- */
+.button {
+  background-color: var(--color-alt);
+  color: var(--text-color);
+  display: inline-block;
+  padding: 0.75rem 1rem;
+  border-radius: 0.3rem;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  white-space: nowrap;
+}
+
+.button:hover {
+  color: var(--first-color);
+}
+
 /* --**FOOTER**-- */
 /* --**MEDIA QUERIES**-- */
 /*# sourceMappingURL=style.css.map */

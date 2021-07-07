@@ -1,0 +1,144 @@
+// GOOGLE FONTS
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+/* --**VARIABLES CSS**-- */
+:root {
+    --header-height: 3rem;
+
+    // colors
+    --frist-color: #12232e;
+    --second-color: #007cc7;
+    --second-color-alt: #203647;
+    --color-alt: #4da8da;
+    --text-color: #eefbfb;
+    --body-color: #fefbfb;
+
+    //font and typography
+
+    --body-font: "Poppins", sans-serif;
+
+    --biggest-font-size: 3.5rem;
+    --big-font-size: 3rem;
+    --huge-font-size: 1.75rem;
+    --h1-font-size: 1.5rem;
+    --h2-font-size: 1.25rem;
+    --h3-font-size: 1.125rem;
+    --normal-font-size: 0.938rem;
+    --small-font-size: 0.75rem;
+
+    @media screen and (min-width: 968px) {
+        --biggest-font-size: 5.5rem;
+        --big-font-size: 4.5rem;
+        --huge-font-size: 3rem;
+        --h1-font-size: 2.25rem;
+        --h2-font-size: 1.75rem;
+        --h3-font-size: 1.25rem;
+        --normal-font-size: 1rem;
+        --small-font-size: 0.875rem;
+    }
+
+    //font weight
+    --font-thin: 100;
+    --font-normal: 400;
+    --font-semi: 600;
+    --font-bold: 700;
+
+    //Margin
+    --mb-1: 0.5rem;
+    --mb-2: 1rem;
+    --mb-3: 1.5rem;
+    --mb-4: 2rem;
+    --mb-5: 2.5rem;
+    --mb-6: 3rem;
+
+    //z-index
+    --z-back: -10;
+    --z-normal: 1;
+    --z-tooltip: 10;
+    --z-fixed: 100;
+    --z-modal: 1000;
+}
+/* --**BASIC**-- */
+
+*,
+::before,
+::after {
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: var(--body-font);
+    font-size: var(--normal-font-size);
+    background-color: var(--body-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+h1,
+h2,
+h3,
+ul,
+p {
+    margin: 0;
+}
+h1,
+h2,
+h3 {
+    font-weight: var(--font-semi-bold);
+    color: var(--title-color);
+}
+ul {
+    padding: 0;
+    list-style: none;
+}
+a {
+    text-decoration: none;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    //display: block;
+}
+
+/* --**CSS CLASS**-- */
+.section {
+    padding: 4rem 0 2rem;
+    &__title {
+        font-size: var(--h1-font-size);
+    }
+    &__subtitle {
+        display: block;
+        font-size: var(--small-font-size);
+        margin-bottom: var(--mb-3);
+    }
+}
+.section__title,
+.section__subtitle {
+    text-align: center;
+}
+
+/* --**LAYOUT**-- */
+.container {
+    max-width: 968px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.grid {
+    display: grid;
+    gap: 1.5rem;
+}
+
+/* --**NAV**-- */
+
+/* --**Show Menu*-- */
+
+/* --**HOME**-- */
+
+/* --**BUTTONS**-- */
+
+/* --**FOOTER**-- */
+
+/* --**MEDIA QUERIES**-- */

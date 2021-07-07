@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 /* --**VARIABLES CSS**-- */
 :root {
-  --header-height: 3rem;
+  --height: 3rem;
   --frist-color: #12232e;
   --second-color: #007cc7;
   --second-color-alt: #203647;
@@ -60,7 +60,7 @@ html {
 }
 
 body {
-  margin: 0;
+  margin: var(--height) 0 0 0;
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   background-color: var(--body-color);
@@ -120,6 +120,7 @@ img {
 /* --**LAYOUT**-- */
 .container {
   max-width: 968px;
+  width: calc(100% - 2rem);
   margin-left: auto;
   margin-right: auto;
 }
@@ -130,8 +131,101 @@ img {
   gap: 1.5rem;
 }
 
+/* --**HEADER**-- */
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  z-index: var(--z-fixed);
+  background-color: var(--frist-color);
+}
+
 /* --**NAV**-- */
+.nav {
+  max-width: 1024px;
+  height: var(--height);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+  .nav__menu {
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    text-align: center;
+    background-color: var(--body-color);
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+    -webkit-box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 1rem 1rem;
+    z-index: var(--z-fixed);
+  }
+}
+
+.nav__item {
+  margin-bottom: var(--mb-2);
+}
+
+.nav__link, .nav__logo {
+  color: var(--second-color);
+  font-weight: var(--font-semi);
+}
+
+.nav__logo:hover {
+  color: var(--second-color-alt);
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.nav__toggle {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 16px;
+}
+
+.nav__toggle div {
+  width: 25px;
+  height: 3px;
+  background-color: var(--color-alt);
+  margin: 5px;
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out;
+  border-radius: 1rem;
+}
+
+/* --**Animation toggleX*-- */
+.toggle .line1 {
+  -webkit-transform: rotate(-45deg) translate(-5px, 6px);
+          transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.toggle .line2 {
+  opacity: 0;
+}
+
+.toggle .line3 {
+  -webkit-transform: rotate(45deg) translate(-5px, -6px);
+          transform: rotate(45deg) translate(-5px, -6px);
+}
+
 /* --**Show Menu*-- */
+.show-menu {
+  top: calc(1rem + var(--height));
+}
+
 /* --**HOME**-- */
 /* --**BUTTONS**-- */
 /* --**FOOTER**-- */

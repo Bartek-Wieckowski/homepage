@@ -3,7 +3,7 @@
 
 /* --**VARIABLES CSS**-- */
 :root {
-    --header-height: 3rem;
+    --height: 3rem;
 
     // colors
     --frist-color: #12232e;
@@ -70,7 +70,7 @@ html {
 }
 
 body {
-    margin: 0;
+    margin: var(--height) 0 0 0;
     font-family: var(--body-font);
     font-size: var(--normal-font-size);
     background-color: var(--body-color);
@@ -123,6 +123,7 @@ img {
 /* --**LAYOUT**-- */
 .container {
     max-width: 968px;
+    width: calc(100% - 2rem);
     margin-left: auto;
     margin-right: auto;
 }
@@ -131,10 +132,80 @@ img {
     gap: 1.5rem;
 }
 
+/* --**HEADER**-- */
+.header {
+    width: 100%;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    z-index: var(--z-fixed);
+    background-color: var(--frist-color);
+}
 /* --**NAV**-- */
-
+.nav {
+    max-width: 1024px;
+    height: var(--height);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &__menu {
+        @media screen and (max-width: 768px) {
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            text-align: center;
+            background-color: var(--body-color);
+            transition: 0.4s;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 1rem 1rem;
+            z-index: var(--z-fixed);
+        }
+    }
+    &__item {
+        margin-bottom: var(--mb-2);
+    }
+    &__link,
+    &__logo {
+        color: var(--second-color);
+        font-weight: var(--font-semi);
+    }
+    &__logo {
+        &:hover {
+            color: var(--second-color-alt);
+            transition: 0.3s;
+        }
+    }
+    &__toggle {
+        cursor: pointer;
+        position: absolute;
+        top: 10px;
+        right: 16px;
+        & div {
+            width: 25px;
+            height: 3px;
+            background-color: var(--color-alt);
+            margin: 5px;
+            transition: all 0.3s ease-out;
+            border-radius: 1rem;
+        }
+    }
+}
+/* --**Animation toggleX*-- */
+.toggle .line1 {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+.toggle .line2 {
+    opacity: 0;
+}
+.toggle .line3 {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
 /* --**Show Menu*-- */
-
+.show-menu {
+    top: calc(1rem + var(--height));
+}
 /* --**HOME**-- */
 
 /* --**BUTTONS**-- */

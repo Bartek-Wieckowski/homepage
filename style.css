@@ -138,7 +138,7 @@ img {
   top: 0%;
   left: 0%;
   z-index: var(--z-fixed);
-  background-color: var(--first-color);
+  background-color: var(--second-color-alt);
 }
 
 /* --**NAV**-- */
@@ -178,8 +178,13 @@ img {
   margin-bottom: var(--mb-2);
 }
 
-.nav__link, .nav__logo {
-  color: var(--second-color);
+.nav__link {
+  color: var(--color-alt);
+  font-weight: var(--font-semi);
+}
+
+.nav__logo {
+  color: var(--color-alt);
   font-weight: var(--font-semi);
 }
 
@@ -228,8 +233,8 @@ img {
 
 /* --**HOME**-- */
 .home {
-  background-color: var(--second-color-alt);
-  height: 100vh;
+  background-color: var(--first-color);
+  height: 100%;
 }
 
 .home__container {
@@ -239,7 +244,6 @@ img {
 }
 
 .home__data {
-  margin-top: 10rem;
   padding: 0 1rem;
 }
 
@@ -260,17 +264,21 @@ img {
 
 .home__blob {
   width: 300px;
-  fill: var(--first-color);
+  fill: var(--second-color-alt);
 }
 
 .home__blob-img {
   width: 200px;
 }
 
+.skills {
+  background-color: var(--body-color);
+}
+
 /* --**SVG waves**-- */
 .wave path {
   stroke: none;
-  fill: var(--second-color);
+  fill: var(--body-color);
 }
 
 /* --**BUTTONS**-- */
@@ -291,4 +299,52 @@ img {
 
 /* --**FOOTER**-- */
 /* --**MEDIA QUERIES**-- */
+@media screen and (min-width: 576px) {
+  /* --**HOME**-- */
+  .home__container {
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* --**NAV**-- */
+  .nav {
+    height: var(--height);
+  }
+  .nav__list {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .nav__item {
+    margin-left: var(--mb-5);
+    margin-bottom: 0;
+  }
+  .nav__link {
+    -webkit-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+  }
+  .nav__link:hover {
+    color: var(--body-color);
+  }
+  .nav__toggle {
+    display: none;
+  }
+  /* --**HOME**-- */
+  .home__container {
+    height: 100vh;
+    justify-items: center;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  /* --**HOME**-- */
+  .home__blob {
+    width: 350px;
+  }
+}
 /*# sourceMappingURL=style.css.map */

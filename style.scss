@@ -139,7 +139,7 @@ img {
     top: 0%;
     left: 0%;
     z-index: var(--z-fixed);
-    background-color: var(--first-color);
+    background-color: var(--second-color-alt);
 }
 /* --**NAV**-- */
 .nav {
@@ -166,12 +166,13 @@ img {
     &__item {
         margin-bottom: var(--mb-2);
     }
-    &__link,
-    &__logo {
-        color: var(--second-color);
+    &__link {
+        color: var(--color-alt);
         font-weight: var(--font-semi);
     }
     &__logo {
+        color: var(--color-alt);
+        font-weight: var(--font-semi);
         &:hover {
             color: var(--second-color-alt);
             transition: 0.3s;
@@ -208,15 +209,14 @@ img {
 }
 /* --**HOME**-- */
 .home {
-    background-color: var(--second-color-alt);
-    height: 100vh;
+    background-color: var(--first-color);
+    height: 100%;
 
     &__container {
         height: calc(100vh - var(--height));
         align-content: center;
     }
     &__data {
-        margin-top: 10rem;
         padding: 0 1rem;
     }
     &__title {
@@ -232,17 +232,20 @@ img {
     }
     &__blob {
         width: 300px;
-        fill: var(--first-color);
+        fill: var(--second-color-alt);
         &-img {
             width: 200px;
         }
     }
 }
+.skills {
+    background-color: var(--body-color);
+}
 /* --**SVG waves**-- */
 .wave {
     & path {
         stroke: none;
-        fill: var(--second-color);
+        fill: var(--body-color);
     }
 }
 
@@ -263,3 +266,46 @@ img {
 /* --**FOOTER**-- */
 
 /* --**MEDIA QUERIES**-- */
+
+@media screen and (min-width: 576px) {
+    /* --**HOME**-- */
+    .home__container {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    /* --**NAV**-- */
+    .nav {
+        height: var(--height);
+        &__list {
+            display: flex;
+        }
+        &__item {
+            margin-left: var(--mb-5);
+            margin-bottom: 0;
+        }
+        &__link {
+            transition: 0.5s ease-in-out;
+            &:hover {
+                color: var(--body-color);
+            }
+        }
+        &__toggle {
+            display: none;
+        }
+    }
+    /* --**HOME**-- */
+    .home__container {
+        height: 100vh;
+        justify-items: center;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    /* --**HOME**-- */
+    .home__blob {
+        width: 350px;
+    }
+}

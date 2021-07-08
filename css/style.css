@@ -1,6 +1,7 @@
 @import url("/css/skills.css");
 @import url("/css/home.css");
 @import url("/css/about.css");
+@import url("/css/portfolio.css");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 /* --**VARIABLES CSS**-- */
 :root {
@@ -100,10 +101,6 @@ img {
 }
 
 /* --**CSS CLASS**-- */
-.section {
-  padding: 4rem 0 2rem;
-}
-
 .section__title {
   font-size: var(--h1-font-size);
   font-weight: var(--font-bold);

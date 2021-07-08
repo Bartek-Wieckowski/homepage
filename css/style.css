@@ -1,4 +1,5 @@
 @import url("/css/skills.css");
+@import url("/css/home.css");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 /* --**VARIABLES CSS**-- */
 :root {
@@ -233,51 +234,6 @@ img {
   top: var(--height);
 }
 
-/* --**HOME**-- */
-.home {
-  background-color: var(--first-color);
-  height: 100%;
-}
-
-.home__container {
-  height: calc(100vh - var(--height));
-  -ms-flex-line-pack: center;
-      align-content: center;
-}
-
-.home__data {
-  padding: 0 1rem;
-}
-
-.home__title {
-  font-size: var(--h1-font-size);
-}
-
-.home__description {
-  font-size: var(--small-font-size);
-  color: var(--second-color);
-}
-
-.home__subtitle {
-  margin-top: var(--mb-3);
-  margin-bottom: var(--mb-3);
-}
-
-.home__img {
-  width: 300px;
-  -ms-grid-column-align: center;
-      justify-self: center;
-}
-
-.home__blob {
-  width: 300px;
-  fill: var(--second-color-alt);
-}
-
-.home__blob-img {
-  width: 200px;
-}
-
 /* --**Special color span**-- */
 .award {
   position: relative;
@@ -321,17 +277,6 @@ img {
 
 /* --**FOOTER**-- */
 /* --**MEDIA QUERIES**-- */
-@media screen and (min-width: 576px) {
-  /* --**HOME**-- */
-  .home__container {
-    -ms-grid-columns: (1fr)[2];
-        grid-template-columns: repeat(2, 1fr);
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
-  }
-}
-
 @media screen and (min-width: 768px) {
   /* --**NAV**-- */
   .nav {
@@ -355,18 +300,6 @@ img {
   }
   .nav__toggle {
     display: none;
-  }
-  /* --**HOME**-- */
-  .home__container {
-    height: 100vh;
-    justify-items: center;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  /* --**HOME**-- */
-  .home__blob {
-    width: 350px;
   }
 }
 /*# sourceMappingURL=style.css.map */

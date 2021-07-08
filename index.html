@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WELCOME TO MY WEBSITE | PORTFOLIO WEB</title>
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 
@@ -215,12 +217,23 @@
 
             <div class="portfolio__container container grid">
                 <article class="project">
-                    <h3 class="project__title">
-                        <span>project:</span><span>tytul repo</span>
-                    </h3>
-                    <p><span>description:</span><span>opis repo</span></p>
-                    <p><span>demo:</span><span><a href="#" title="demo repo">&lt;see_here&gt;</a></span></p>
-                    <p><span>github:</span><span><a href="#" title="git repo">&lt;source_code&gt;</a></span></p>
+                    <div class="project__window">
+                        <span class="project__circle"></span>
+                        <span class="project__circle"></span>
+                        <span class="project__circle"></span>
+                    </div>
+                    <div class="project__content">
+                        <i class='bx bxl-github project__icon'></i>
+                        <h3 class="project__grid project__title">
+                            <span class="project__label">project:</span><span>tytul repo</span>
+                        </h3>
+                        <p class="project__grid"><span class="project__label">description:</span><span>opis repo</span>
+                        </p>
+                        <p class="project__grid"><span class="project__label">demo:</span><span><a href="#"
+                                    title="demo repo" class="project__link">&lt;see_here&gt;</a></span></p>
+                        <p class="project__grid"><span class="project__label">github:</span><span><a href="#"
+                                    title="git repo" class="project__link">&lt;source_code&gt;</a></span></p>
+                    </div>
                 </article>
             </div>
         </section>

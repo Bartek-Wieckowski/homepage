@@ -12,6 +12,9 @@
   --color-alt: #4da8da;
   --text-color: #eefbfb;
   --body-color: #fefbfb;
+  --bg-project: #212528;
+  --bg-project-alt: #1e1e1e;
+  --bg-project-circle: rgb(70, 63, 63);
   --body-font: "Poppins", sans-serif;
   --biggest-font-size: 3.5rem;
   --big-font-size: 3rem;

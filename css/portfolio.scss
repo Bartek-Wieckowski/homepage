@@ -2,3 +2,56 @@
     background-color: var(--body-color);
     color: var(--second-color-alt);
 }
+
+.project {
+    -webkit-box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.25);
+    background-color: var(--bg-project);
+    border-radius: 1rem;
+    overflow: hidden;
+    font-family: Roboto Mono;
+    font-weight: normal;
+    font-size: var(--h3-font-size);
+    line-height: 1.5rem;
+    &__content {
+        padding: 1.5rem 1rem;
+        // color: var(--text-color);
+        color: var(--second-color);
+    }
+    &__grid {
+        display: grid;
+        grid-template-columns: 102px 1fr;
+        column-gap: 8px;
+    }
+    &__label {
+        display: block;
+        text-align: right;
+    }
+    &__window {
+        height: 2.5rem;
+        background-color: var(--bg-project-alt);
+        display: flex;
+        align-items: center;
+        padding: 0 0 0 1rem;
+    }
+    &__circle {
+        display: block;
+        width: 8px;
+        height: 8px;
+        background-color: var(--bg-project-circle);
+        border-radius: 50%;
+        margin-right: var(--mb-1);
+    }
+    &__title {
+        font-weight: bold;
+        color: #fff;
+        line-height: 1.5rem;
+    }
+    &__link {
+        color: var(--second-color-alt);
+    }
+    &__icon {
+        color: var(--text-color);
+        font-size: 2rem;
+    }
+}

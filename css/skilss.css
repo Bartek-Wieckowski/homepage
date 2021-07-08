@@ -1,0 +1,9 @@
+@import url("./style.css");
+.skills {
+  color: var(--second-color-alt);
+}
+
+.skills__emoji {
+  font-size: 50px;
+}
+/*# sourceMappingURL=skilss.css.map */

@@ -1,4 +1,4 @@
-@import url("/css/skilss.css");
+@import url("/css/skills.css");
 // GOOGLE FONTS
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
@@ -109,10 +109,12 @@ img {
     padding: 4rem 0 2rem;
     &__title {
         font-size: var(--h1-font-size);
+        font-weight: var(--font-bold);
     }
     &__subtitle {
         display: block;
-        font-size: var(--small-font-size);
+        // font-size: var(--small-font-size);
+        font-size: var(--normal-font-size);
         margin-bottom: var(--mb-3);
     }
 }
@@ -254,9 +256,7 @@ img {
         }
     }
 }
-.skills {
-    background-color: var(--body-color);
-}
+
 /* --**SVG waves**-- */
 .wave {
     & path {

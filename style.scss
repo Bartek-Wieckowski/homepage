@@ -256,7 +256,24 @@ img {
         }
     }
 }
-
+/* --**Special color span**-- */
+.award {
+    position: relative;
+    &::after {
+        display: block;
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0.3;
+        -webkit-transform: scale(1.07, 1.05) skewX(-15deg);
+        -ms-transform: scale(1.07, 1.05) skewX(-15deg);
+        transform: scale(1.07, 1.05) skewX(-15deg);
+        background-color: var(--second-color);
+    }
+}
 /* --**SVG waves**-- */
 .wave {
     & path {

@@ -1,5 +1,6 @@
 @import url("/css/skills.css");
 @import url("/css/home.css");
+@import url("/css/about.css");
 // GOOGLE FONTS
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
@@ -90,7 +91,6 @@ h1,
 h2,
 h3 {
     font-weight: var(--font-semi-bold);
-    color: var(--title-color);
 }
 ul {
     padding: 0;
@@ -114,7 +114,6 @@ img {
     }
     &__subtitle {
         display: block;
-        // font-size: var(--small-font-size);
         font-size: var(--normal-font-size);
         margin-bottom: var(--mb-3);
     }
@@ -246,6 +245,11 @@ img {
     & path {
         stroke: none;
         fill: var(--body-color);
+    }
+    &--alt {
+        & path {
+            fill: var(--first-color);
+        }
     }
 }
 

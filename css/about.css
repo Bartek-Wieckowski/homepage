@@ -1,0 +1,65 @@
+.about {
+  background-color: var(--first-color);
+}
+
+.about__container {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.about__data {
+  margin-bottom: var(--mb-2);
+  width: 100%;
+  max-width: 650px;
+}
+
+.about__data--programming, .about__data--sport, .about__data--curiosity {
+  color: var(--second-color);
+}
+
+/* --**TOOLTIP**-- */
+a.tooltip {
+  outline: none;
+  color: var(--color-alt);
+}
+
+a.tooltip:hover {
+  text-decoration: none;
+}
+
+a.tooltip span {
+  z-index: 10;
+  display: none;
+  padding: 14px 20px;
+  margin-top: 60px;
+  margin-left: -160px;
+  width: 300px;
+}
+
+a.tooltip:hover span {
+  display: inline;
+  position: absolute;
+}
+
+.callout {
+  z-index: 20;
+  position: absolute;
+  border: 0;
+  top: -14px;
+  left: 100px;
+  border-radius: 1rem;
+}
+
+.callout--prog {
+  height: 250px;
+  width: 250px;
+  top: -35px;
+  left: 150px;
+}
+
+.callout--curiosity {
+  top: -300px;
+  left: -10px;
+}
+/*# sourceMappingURL=about.css.map */

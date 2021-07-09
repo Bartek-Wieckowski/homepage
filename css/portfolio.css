@@ -33,6 +33,11 @@
 .project__label {
   display: block;
   text-align: right;
+  color: gray;
+}
+
+.project__label--description {
+  color: gray;
 }
 
 .project__window {
@@ -56,14 +61,27 @@
   margin-right: var(--mb-1);
 }
 
+.project__circle--red {
+  background-color: red;
+}
+
+.project__circle--yellow {
+  background-color: yellow;
+}
+
+.project__circle--green {
+  background-color: green;
+}
+
 .project__title {
   font-weight: bold;
   color: #fff;
   line-height: 1.5rem;
+  margin-bottom: var(--mb-1);
 }
 
 .project__link {
-  color: var(--second-color-alt);
+  color: var(--second-color);
 }
 
 .project__icon {

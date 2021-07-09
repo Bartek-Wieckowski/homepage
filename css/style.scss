@@ -254,6 +254,11 @@ img {
             fill: var(--first-color);
         }
     }
+    &--blue {
+        & path {
+            fill: var(--second-color);
+        }
+    }
 }
 
 /* --**BUTTONS**-- */
@@ -272,7 +277,11 @@ img {
     }
 }
 
-/* --**FOOTER**-- */
+/* --**CONTACT**-- */
+.contact {
+    background-color: var(--second-color);
+    color: var(--text-color);
+}
 
 /* --**MEDIA QUERIES**-- */
 

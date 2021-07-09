@@ -263,6 +263,10 @@ img {
   fill: var(--first-color);
 }
 
+.wave--blue path {
+  fill: var(--second-color);
+}
+
 /* --**BUTTONS**-- */
 .button {
   background-color: var(--color-alt);
@@ -279,7 +283,12 @@ img {
   color: var(--first-color);
 }
 
-/* --**FOOTER**-- */
+/* --**CONTACT**-- */
+.contact {
+  background-color: var(--second-color);
+  color: var(--text-color);
+}
+
 /* --**MEDIA QUERIES**-- */
 @media screen and (min-width: 768px) {
   /* --**NAV**-- */

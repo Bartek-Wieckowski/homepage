@@ -253,6 +253,10 @@ img {
   background-color: var(--second-color);
 }
 
+.award--alt {
+  background-color: var(--first-color);
+}
+
 /* --**SVG waves**-- */
 .wave path {
   stroke: none;
@@ -261,10 +265,6 @@ img {
 
 .wave--alt path {
   fill: var(--first-color);
-}
-
-.wave--blue path {
-  fill: var(--second-color);
 }
 
 /* --**BUTTONS**-- */
@@ -287,6 +287,47 @@ img {
 .contact {
   background-color: var(--second-color);
   color: var(--text-color);
+  padding: 2rem 0;
+}
+
+.contact__mail {
+  background-color: #fff;
+  border: none;
+  border-radius: 2rem;
+  padding: 1rem;
+  width: 200px;
+  -ms-grid-column-align: center;
+  justify-self: center;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+  margin-bottom: var(--mb-3);
+}
+
+.contact__mail:hover {
+  color: red;
+}
+
+.socials {
+  padding: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin-top: var(--mb-4);
+  margin-bottom: var(--mb-3);
+}
+
+.socials__icon {
+  font-size: 4rem;
+  color: var(--text-color);
+  -webkit-transition: 0.3s ease-in;
+  transition: 0.3s ease-in;
+}
+
+.socials__icon:hover {
+  color: var(--first-color);
 }
 
 /* --**MEDIA QUERIES**-- */

@@ -20,7 +20,6 @@
 
 /* --**TOOLTIP**-- */
 a.tooltip {
-  outline: none;
   color: var(--color-alt);
 }
 

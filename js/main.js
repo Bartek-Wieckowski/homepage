@@ -1,6 +1,8 @@
 const navigationBar = document.querySelector(".nav__menu--js");
 const hamburger = document.querySelector(".nav__toggle--js");
 const allMenuLinks = document.querySelectorAll(".nav__item");
+const allTitles = document.querySelectorAll(".section__title");
+const allSubtitles = document.querySelectorAll(".section__subtitle");
 
 // create function - show navigation after click hamburger
 
@@ -19,6 +21,27 @@ allMenuLinks.forEach((link) =>
   })
 );
 
+//revealing elements on scroll
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove("section--hidden");
+  observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
+
+allTitles.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add("section--hidden");
+});
+allSubtitles.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add("section--hidden");
+});
 // connect to github repositories
 
 fetch("https://api.github.com/users/bartek-wieckowski/repos?sort=create")

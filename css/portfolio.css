@@ -20,6 +20,7 @@
   line-height: 1.5rem;
   -ms-grid-column-align: center;
       justify-self: center;
+  width: 100%;
 }
 
 .project__content {

@@ -114,11 +114,17 @@ img {
     &__title {
         font-size: var(--h1-font-size);
         font-weight: var(--font-bold);
+        transition: transform 0.3s ease;
     }
     &__subtitle {
         display: block;
         font-size: var(--normal-font-size);
         margin-bottom: var(--mb-3);
+        transition: transform 0.4s ease;
+    }
+    &--hidden {
+        opacity: 0;
+        transform: translateY(8rem);
     }
 }
 .section__title,

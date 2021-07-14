@@ -3,6 +3,7 @@ const hamburger = document.querySelector(".nav__toggle--js");
 const allMenuLinks = document.querySelectorAll(".nav__item");
 const allTitles = document.querySelectorAll(".section__title");
 const allSubtitles = document.querySelectorAll(".section__subtitle");
+const nav = document.querySelector(".nav");
 
 // create function - show navigation after click hamburger
 
@@ -20,6 +21,22 @@ allMenuLinks.forEach((link) =>
     hamburger.classList.remove("toggle");
   })
 );
+
+// hover fade animation in navigation
+const handleHover = function (e) {
+  if (e.target.classList.contains("nav__link")) {
+    const link = e.target;
+    const siblings = link.closest(".nav").querySelectorAll(".nav__link");
+    const logo = link.closest(".nav").querySelector(".nav__logo");
+
+    siblings.forEach((el) => {
+      if (el !== link) el.style.opacity = this;
+    });
+    logo.style.opacity = this;
+  }
+};
+nav.addEventListener("mouseover", handleHover.bind(0.5));
+nav.addEventListener("mouseout", handleHover.bind(1));
 
 //revealing elements on scroll
 const revealSection = function (entries, observer) {

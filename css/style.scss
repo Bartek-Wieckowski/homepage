@@ -110,7 +110,9 @@ img {
 
 /* --**CSS CLASS**-- */
 .section {
-    // padding: 4rem 0 2rem;
+    &--pad {
+        padding: 4rem 0 0;
+    }
     &__title {
         font-size: var(--h1-font-size);
         font-weight: var(--font-bold);
@@ -229,6 +231,20 @@ img {
 /* --**Show Menu*-- */
 .show-menu {
     top: var(--height);
+}
+/* --**Active Menu Link*-- */
+.active-link {
+    position: relative;
+    &::before {
+        content: "";
+        position: absolute;
+        bottom: -0.35rem;
+        left: 45%;
+        width: 5px;
+        height: 5px;
+        background-color: red;
+        border-radius: 50%;
+    }
 }
 
 /* --**Special color span**-- */

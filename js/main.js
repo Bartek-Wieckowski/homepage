@@ -3,6 +3,7 @@ const hamburger = document.querySelector(".nav__toggle--js");
 const allMenuLinks = document.querySelectorAll(".nav__item");
 const allTitles = document.querySelectorAll(".section__title");
 const allSubtitles = document.querySelectorAll(".section__subtitle");
+const sections = document.querySelectorAll(".section[id]");
 const nav = document.querySelector(".nav");
 
 // create function - show navigation after click hamburger
@@ -37,6 +38,28 @@ const handleHover = function (e) {
 };
 nav.addEventListener("mouseover", handleHover.bind(0.5));
 nav.addEventListener("mouseout", handleHover.bind(1));
+
+// active link when we scroll in page
+function scrollActive() {
+  const scrollY = window.pageYOffset;
+
+  sections.forEach((current) => {
+    const sectionHeight = current.offsetHeight;
+    const sectionTop = current.offsetTop - 100;
+    sectionId = current.getAttribute("id");
+
+    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+      document
+        .querySelector(".nav__menu a[href*=" + sectionId + "]")
+        .classList.add("active-link");
+    } else {
+      document
+        .querySelector(".nav__menu a[href*=" + sectionId + "]")
+        .classList.remove("active-link");
+    }
+  });
+}
+window.addEventListener("scroll", scrollActive);
 
 //revealing elements on scroll
 const revealSection = function (entries, observer) {

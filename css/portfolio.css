@@ -1,7 +1,7 @@
 .portfolio {
   background-color: var(--body-color);
   color: var(--second-color-alt);
-  padding: 0 0 4rem 0;
+  margin-bottom: 4rem;
 }
 
 .portfolio__container {

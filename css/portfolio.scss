@@ -78,6 +78,42 @@
         font-size: 2rem;
     }
 }
+.vouchers {
+    width: 100%;
+    margin: 0 auto;
+    background-color: var(--first-color-alt);
+
+    &__tab-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 6rem;
+    }
+    &__tab {
+        margin-right: 0.3rem;
+        transform: translateY(-20%);
+        width: 150px;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    &__tab--1 {
+        &:hover {
+            background-color: #ff585f;
+        }
+    }
+    &__tab--2 {
+        &:hover {
+            background-color: #ffbb00;
+        }
+    }
+    &__tab--3 {
+        &:hover {
+            background-color: #4bbb7d;
+        }
+    }
+    &__tab--active {
+        transform: translateY(-66%);
+    }
+}
 
 @media screen and (min-width: 576px) {
     /* --**PORTFOLIO**-- */
@@ -96,6 +132,11 @@
         }
         &__icon {
             margin-bottom: var(--mb-3);
+        }
+    }
+    .vouchers {
+        &__tab {
+            margin-right: 1rem;
         }
     }
 }

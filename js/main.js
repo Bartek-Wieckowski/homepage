@@ -82,15 +82,22 @@ allSubtitles.forEach(function (section) {
   sectionObserver.observe(section);
   section.classList.add("section--hidden");
 });
+
 // connect to github repositories
 
 fetch("https://api.github.com/users/bartek-wieckowski/repos?sort=create")
   .then((res) => res.json())
   .then((res) => {
     const container = document.querySelector(".portfolio__container--js");
+    const tabs1 = document.querySelector(".vouchers__tab--1");
+    const tabs2 = document.querySelector(".vouchers__tab--2");
+    const tabs3 = document.querySelector(".vouchers__tab--3");
+
     for (let repo of res) {
-      const { description, homepage, html__url, name } = repo;
-      const template = `<article class="project">
+      const { description, homepage, html_url, name } = repo;
+      let template = document.createElement("article");
+      template.setAttribute("class", "project");
+      template.innerHTML = `
       <div class="project__window">
           <span class="project__circle project__circle--red"></span>
           <span class="project__circle project__circle--yellow"></span>
@@ -104,14 +111,104 @@ fetch("https://api.github.com/users/bartek-wieckowski/repos?sort=create")
           <p class="project__grid"><span class="project__label">description:</span><span
                   class="project__label--description">${description}</span>
           </p>
-          <p class="project__grid"><span class="project__label">demo:</span><span><a href="${homepage}"
+          <p class="project__grid"><span class="project__label">demo:</span><span><a target="_blank" rel="noopener noreferrer" href="${homepage}"
                       title="${name} - demo" class="project__link">&lt;see_here&gt;</a></span></p>
-          <p class="project__grid"><span class="project__label">github:</span><span><a href="${html__url}"
+          <p class="project__grid"><span class="project__label">github:</span><span><a target="_blank" rel="noopener noreferrer" href="${html_url}"
                       title="${name} - code" class="project__link">&lt;source_code&gt;</a></span></p>
       </div>
-  </article>`;
+    </article>`;
 
-      container.innerHTML += template;
+      let template2 = document.createElement("article");
+      template2.setAttribute("class", "project");
+      template2.innerHTML = `
+      <div class="project__window">
+          <span class="project__circle project__circle--red"></span>
+          <span class="project__circle project__circle--yellow"></span>
+          <span class="project__circle project__circle--green"></span>
+      </div>
+      <div class="project__content">
+          <i class='bx bxl-github project__icon'></i>
+          <h3 class="project__grid project__title">
+              <span class="project__label">project:</span><span>${name}</span>
+          </h3>
+          <p class="project__grid"><span class="project__label">description:</span><span
+                  class="project__label--description">${description}</span>
+          </p>
+          <p class="project__grid"><span class="project__label">demo:</span><span><a target="_blank" rel="noopener noreferrer" href="${homepage}"
+                      title="${name} - demo" class="project__link">&lt;see_here&gt;</a></span></p>
+          <p class="project__grid"><span class="project__label">github:</span><span><a target="_blank" rel="noopener noreferrer" href="${html_url}"
+                      title="${name} - code" class="project__link">&lt;source_code&gt;</a></span></p>
+      </div>
+    </article>`;
+      let template3 = document.createElement("article");
+      template3.setAttribute("class", "project");
+      template3.innerHTML = `
+      <div class="project__window">
+          <span class="project__circle project__circle--red"></span>
+          <span class="project__circle project__circle--yellow"></span>
+          <span class="project__circle project__circle--green"></span>
+      </div>
+      <div class="project__content">
+          <i class='bx bxl-github project__icon'></i>
+          <h3 class="project__grid project__title">
+              <span class="project__label">project:</span><span>${name}</span>
+          </h3>
+          <p class="project__grid"><span class="project__label">description:</span><span
+                  class="project__label--description">${description}</span>
+          </p>
+          <p class="project__grid"><span class="project__label">demo:</span><span><a target="_blank" rel="noopener noreferrer" href="${homepage}"
+                      title="${name} - demo" class="project__link">&lt;see_here&gt;</a></span></p>
+          <p class="project__grid"><span class="project__label">github:</span><span><a target="_blank" rel="noopener noreferrer" href="${html_url}"
+                      title="${name} - code" class="project__link">&lt;source_code&gt;</a></span></p>
+      </div>
+    </article>`;
+
+      const optionsOne = function () {
+        if (description === "Website") {
+          container.appendChild(template);
+        } else if (description !== "Website") {
+          template2.remove(template2);
+          template3.remove(template3);
+        }
+      };
+      tabs1.addEventListener("click", optionsOne);
+
+      const optionsTwo = function () {
+        if (description === "JavaScript") {
+          container.appendChild(template2);
+        } else if (description !== "JavaScript") {
+          template.remove(template);
+          template3.remove(template3);
+        }
+      };
+      tabs2.addEventListener("click", optionsTwo);
+
+      const optionsThree = function () {
+        if (description === "Another") {
+          container.appendChild(template3);
+        } else if (description !== "Another") {
+          template.remove(template);
+          template2.remove(template2);
+        }
+      };
+      tabs3.addEventListener("click", optionsThree);
     }
   })
+
   .catch((e) => console.log(e));
+
+const tabs = document.querySelectorAll(".vouchers__tab");
+const tabsContainer = document.querySelector(".vouchers__tab-container");
+
+// used event delegation
+
+tabsContainer.addEventListener("click", function (e) {
+  const clicked = e.target.closest(".vouchers__tab");
+
+  //   guard clauses
+  if (!clicked) return;
+  // remove active classes
+  tabs.forEach((t) => t.classList.remove("vouchers__tab--active"));
+  // active tab
+  clicked.classList.add("vouchers__tab--active");
+});

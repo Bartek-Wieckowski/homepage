@@ -303,6 +303,8 @@ img {
     padding: 1rem 0.2rem;
     border-radius: 10rem;
     cursor: pointer;
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
     transition: 0.3s;
     @media screen and (min-width: 769px) {
         padding: 1rem;
@@ -336,7 +338,11 @@ img {
 }
 .socials {
     padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: space-evenly;
+    -ms-flex-pack: space-evenly;
     justify-content: space-evenly;
     margin-top: var(--mb-4);
     margin-bottom: var(--mb-3);
@@ -359,6 +365,8 @@ img {
     .nav {
         height: var(--height);
         &__list {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
         }
         &__item {

@@ -23,6 +23,7 @@ const showMenu = function () {
 hamburger.addEventListener("click", showMenu);
 
 // closing the hamburger menu after clicking a link
+
 allMenuLinks.forEach((link) =>
   link.addEventListener("click", () => {
     navigationBar.classList.remove("show-menu");
@@ -31,6 +32,7 @@ allMenuLinks.forEach((link) =>
 );
 
 // hover fade animation in navigation
+
 const handleHover = function (e) {
   if (e.target.classList.contains("nav__link")) {
     const link = e.target;
@@ -46,7 +48,8 @@ const handleHover = function (e) {
 nav.addEventListener("mouseover", handleHover.bind(0.5));
 nav.addEventListener("mouseout", handleHover.bind(1));
 
-// active link when we scroll in page
+// active nav-link when we scroll in page
+
 function scrollActive() {
   const scrollY = window.pageYOffset;
 
@@ -69,6 +72,7 @@ function scrollActive() {
 window.addEventListener("scroll", scrollActive);
 
 //revealing elements on scroll
+
 const revealSection = function (entries, observer) {
   const [entry] = entries;
   if (!entry.isIntersecting) return;
@@ -171,6 +175,7 @@ tabsContainer.addEventListener("click", function (e) {
 });
 
 // funny greetings ;)
+
 console.log(
   `Hello visitor👋 it's great that you're looking at the console.log😉`
 );

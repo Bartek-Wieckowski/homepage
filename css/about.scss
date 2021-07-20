@@ -1,6 +1,8 @@
 .about {
     background-color: var(--first-color);
     &__container {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
     }
     &__data {

@@ -5,6 +5,7 @@
 
     &__container {
         height: calc(100vh - var(--height));
+        -ms-flex-line-pack: center;
         align-content: center;
     }
     &__data {
@@ -23,6 +24,7 @@
     }
     &__img {
         width: 300px;
+        -ms-grid-column-align: center;
         justify-self: center;
     }
     &__blob {
@@ -37,6 +39,8 @@
     /* --**HOME**-- */
     .home__container {
         grid-template-columns: repeat(2, 1fr);
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
     }
 }

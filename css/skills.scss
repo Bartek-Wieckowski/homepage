@@ -1,10 +1,12 @@
-// @import url("../style.css");
-
 .skills {
     background-color: var(--body-color);
     color: var(--second-color-alt);
     &__container {
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
         justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
     }
     &__content {
@@ -36,6 +38,8 @@
     .skills {
         &__container {
             grid-template-columns: repeat(2, 1fr);
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
         }
         &__content {
@@ -44,19 +48,19 @@
     }
 }
 
-@media screen and (min-width: 768px) {
-    /* --**SKILLS**-- */
-}
-
 @media screen and (min-width: 1024px) {
     /* --**SKILLS**-- */
 
     .skills {
         &__container {
             grid-template-columns: repeat(3, 1fr);
+            -webkit-box-align: center;
+            -ms-flex-align: center;
             align-items: center;
         }
         &__content {
+            -webkit-transition: 0.3s ease;
+            -o-transition: 0.3s ease;
             transition: 0.3s ease;
             &:hover {
                 -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3), 0 0 40px rgba(0, 0, 0, 0.1) inset;

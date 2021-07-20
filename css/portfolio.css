@@ -19,7 +19,7 @@
   font-size: var(--h3-font-size);
   line-height: 1.5rem;
   -ms-grid-column-align: center;
-      justify-self: center;
+  justify-self: center;
   width: 100%;
 }
 
@@ -31,10 +31,10 @@
 .project__grid {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: 102px 1fr;
-      grid-template-columns: 102px 1fr;
+  -ms-grid-columns: 102px 8px 1fr;
+  grid-template-columns: 102px 1fr;
   -webkit-column-gap: 8px;
-          column-gap: 8px;
+  column-gap: 8px;
 }
 
 .project__label {
@@ -57,8 +57,8 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   padding: 0 0 0 1rem;
 }
 
@@ -111,15 +111,15 @@
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   margin-top: 6rem;
 }
 
 .repo__tab {
   margin-right: 0.3rem;
   -webkit-transform: translateY(-20%);
-          transform: translateY(-20%);
+  transform: translateY(-20%);
   width: 150px;
   font-weight: bold;
   text-transform: uppercase;
@@ -139,7 +139,7 @@
 
 .repo__tab--active {
   -webkit-transform: translateY(-66%);
-          transform: translateY(-66%);
+  transform: translateY(-66%);
 }
 
 @media screen and (min-width: 576px) {
@@ -169,7 +169,7 @@
   /* --**PORTFOLIO**-- */
   .portfolio__container {
     -ms-grid-columns: 1fr 1fr;
-        grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
   .project__content {
     padding: 1.5rem 3.5rem 6rem;

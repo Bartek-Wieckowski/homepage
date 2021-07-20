@@ -382,6 +382,13 @@ img {
   color: var(--first-color);
 }
 
+.copy {
+  font-size: var(--small-font-size);
+  text-align: center;
+  color: var(--text-color);
+  margin-top: var(--mb-3);
+}
+
 /* --**MEDIA QUERIES**-- */
 @media screen and (min-width: 769px) {
   /* --**NAV**-- */

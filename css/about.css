@@ -40,6 +40,10 @@ a.tooltip:hover span {
   position: absolute;
 }
 
+.disable-link {
+  pointer-events: none;
+}
+
 .callout {
   z-index: 20;
   position: absolute;

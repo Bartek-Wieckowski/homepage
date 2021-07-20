@@ -27,6 +27,7 @@
         width: 300px;
         -ms-grid-column-align: center;
         justify-self: center;
+        margin-bottom: 6rem;
     }
     &__blob {
         width: 300px;
@@ -46,6 +47,9 @@
     }
     .home__data {
         margin-top: 0;
+    }
+    .home__img {
+        margin-bottom: 0;
     }
 }
 

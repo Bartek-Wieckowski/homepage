@@ -36,6 +36,9 @@ a.tooltip:hover span {
     display: inline;
     position: absolute;
 }
+.disable-link {
+    pointer-events: none;
+}
 
 .callout {
     z-index: 20;

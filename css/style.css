@@ -292,6 +292,10 @@ img {
 }
 
 /* --**SVG waves**-- */
+.wave {
+  margin-top: 4rem;
+}
+
 .wave path {
   stroke: none;
   fill: var(--body-color);
@@ -390,6 +394,12 @@ img {
 }
 
 /* --**MEDIA QUERIES**-- */
+@media screen and (min-width: 576px) {
+  .wave {
+    margin-top: 0;
+  }
+}
+
 @media screen and (min-width: 769px) {
   /* --**NAV**-- */
   .nav {

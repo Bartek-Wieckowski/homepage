@@ -6,6 +6,13 @@ const allSubtitles = document.querySelectorAll(".section__subtitle");
 const sections = document.querySelectorAll(".section[id]");
 const nav = document.querySelector(".nav");
 
+const tabs = document.querySelectorAll(".repo__tab");
+const tabsContainer = document.querySelector(".repo__tab-container");
+const container = document.querySelector(".portfolio__container--js");
+const tabs1 = document.querySelector(".repo__tab--1");
+const tabs2 = document.querySelector(".repo__tab--2");
+const tabs3 = document.querySelector(".repo__tab--3");
+
 // create function - show navigation after click hamburger
 
 const showMenu = function () {
@@ -88,11 +95,6 @@ allSubtitles.forEach(function (section) {
 fetch("https://api.github.com/users/bartek-wieckowski/repos?sort=create")
   .then((res) => res.json())
   .then((res) => {
-    const container = document.querySelector(".portfolio__container--js");
-    const tabs1 = document.querySelector(".repo__tab--1");
-    const tabs2 = document.querySelector(".repo__tab--2");
-    const tabs3 = document.querySelector(".repo__tab--3");
-
     for (let repo of res) {
       const { description, homepage, html_url, name } = repo;
       let template = document.createElement("article");
@@ -117,67 +119,25 @@ fetch("https://api.github.com/users/bartek-wieckowski/repos?sort=create")
                       title="${name} - code" class="project__link">&lt;source_code&gt;</a></span></p>
       </div>
     </article>`;
-
-      let template2 = document.createElement("article");
-      template2.setAttribute("class", "project");
-      template2.innerHTML = `
-      <div class="project__window">
-          <span class="project__circle project__circle--red"></span>
-          <span class="project__circle project__circle--yellow"></span>
-          <span class="project__circle project__circle--green"></span>
-      </div>
-      <div class="project__content">
-          <i class='bx bxl-github project__icon'></i>
-          <h3 class="project__grid project__title">
-              <span class="project__label">project:</span><span>${name}</span>
-          </h3>
-          <p class="project__grid"><span class="project__label">description:</span><span
-                  class="project__label--description">${description}</span>
-          </p>
-          <p class="project__grid"><span class="project__label">demo:</span><span><a target="_blank" rel="noopener noreferrer" href="${homepage}"
-                      title="${name} - demo" class="project__link">&lt;see_here&gt;</a></span></p>
-          <p class="project__grid"><span class="project__label">github:</span><span><a target="_blank" rel="noopener noreferrer" href="${html_url}"
-                      title="${name} - code" class="project__link">&lt;source_code&gt;</a></span></p>
-      </div>
-    </article>`;
-      let template3 = document.createElement("article");
-      template3.setAttribute("class", "project");
-      template3.innerHTML = `
-      <div class="project__window">
-          <span class="project__circle project__circle--red"></span>
-          <span class="project__circle project__circle--yellow"></span>
-          <span class="project__circle project__circle--green"></span>
-      </div>
-      <div class="project__content">
-          <i class='bx bxl-github project__icon'></i>
-          <h3 class="project__grid project__title">
-              <span class="project__label">project:</span><span>${name}</span>
-          </h3>
-          <p class="project__grid"><span class="project__label">description:</span><span
-                  class="project__label--description">${description}</span>
-          </p>
-          <p class="project__grid"><span class="project__label">demo:</span><span><a target="_blank" rel="noopener noreferrer" href="${homepage}"
-                      title="${name} - demo" class="project__link">&lt;see_here&gt;</a></span></p>
-          <p class="project__grid"><span class="project__label">github:</span><span><a target="_blank" rel="noopener noreferrer" href="${html_url}"
-                      title="${name} - code" class="project__link">&lt;source_code&gt;</a></span></p>
-      </div>
-    </article>`;
+      const template1 = template;
+      const template2 = template;
+      const template3 = template;
 
       const optionsOne = function () {
         if (description === "Website") {
           container.appendChild(template);
         } else if (description !== "Website") {
-          template2.remove(template2);
-          template3.remove(template3);
+          template2.remove(template);
+          template3.remove(template);
         }
       };
       tabs1.addEventListener("click", optionsOne);
 
       const optionsTwo = function () {
         if (description === "JavaScript") {
-          container.appendChild(template2);
+          container.appendChild(template);
         } else if (description !== "JavaScript") {
-          template.remove(template);
+          template1.remove(template);
           template3.remove(template3);
         }
       };
@@ -185,10 +145,10 @@ fetch("https://api.github.com/users/bartek-wieckowski/repos?sort=create")
 
       const optionsThree = function () {
         if (description === "Another") {
-          container.appendChild(template3);
+          container.appendChild(template);
         } else if (description !== "Another") {
-          template.remove(template);
-          template2.remove(template2);
+          template1.remove(template);
+          template2.remove(template);
         }
       };
       tabs3.addEventListener("click", optionsThree);
@@ -197,10 +157,7 @@ fetch("https://api.github.com/users/bartek-wieckowski/repos?sort=create")
 
   .catch((e) => console.log(e));
 
-const tabs = document.querySelectorAll(".repo__tab");
-const tabsContainer = document.querySelector(".repo__tab-container");
-
-// used event delegation
+// TABS component
 
 tabsContainer.addEventListener("click", function (e) {
   const clicked = e.target.closest(".repo__tab");
@@ -212,3 +169,8 @@ tabsContainer.addEventListener("click", function (e) {
   // active tab
   clicked.classList.add("repo__tab--active");
 });
+
+// funny greetings ;)
+console.log(
+  `Hello visitor👋 it's great that you're looking at the console.log😉`
+);

@@ -10,6 +10,7 @@
     }
     &__data {
         padding: 0 1rem;
+        margin-top: 6rem;
     }
     &__title {
         font-size: var(--h1-font-size);
@@ -42,6 +43,9 @@
         -webkit-box-align: center;
         -ms-flex-align: center;
         align-items: center;
+    }
+    .home__data {
+        margin-top: 0;
     }
 }
 

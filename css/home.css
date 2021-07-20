@@ -12,7 +12,7 @@
 
 .home__data {
   padding: 0 1rem;
-  margin-top: 6rem;
+  padding-top: 8rem;
 }
 
 .home__title {
@@ -33,7 +33,7 @@
   width: 300px;
   -ms-grid-column-align: center;
   justify-self: center;
-  margin-bottom: 6rem;
+  padding-bottom: 5rem;
 }
 
 .home__blob {
@@ -55,10 +55,10 @@
     align-items: center;
   }
   .home__data {
-    margin-top: 0;
+    padding-top: 0;
   }
   .home__img {
-    margin-bottom: 0;
+    padding-bottom: 0;
   }
 }
 

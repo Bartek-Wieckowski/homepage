@@ -112,7 +112,7 @@ fetch("https://api.github.com/users/bartek-wieckowski/repos?sort=create")
       <div class="project__content">
           <i class='bx bxl-github project__icon'></i>
           <h3 class="project__grid project__title">
-              <span class="project__label">project:</span><span>${name}</span>
+              <span class="project__label">project:</span><span class="project__name">${name}</span>
           </h3>
           <p class="project__grid"><span class="project__label">description:</span><span
                   class="project__label--description">${description}</span>

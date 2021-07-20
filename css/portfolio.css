@@ -100,13 +100,13 @@
   font-size: 2rem;
 }
 
-.vouchers {
+.repo {
   width: 100%;
   margin: 0 auto;
   background-color: var(--first-color-alt);
 }
 
-.vouchers__tab-container {
+.repo__tab-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -116,7 +116,7 @@
   margin-top: 6rem;
 }
 
-.vouchers__tab {
+.repo__tab {
   margin-right: 0.3rem;
   -webkit-transform: translateY(-20%);
           transform: translateY(-20%);
@@ -125,19 +125,19 @@
   text-transform: uppercase;
 }
 
-.vouchers__tab--1:hover {
+.repo__tab--1:hover {
   background-color: #ff585f;
 }
 
-.vouchers__tab--2:hover {
+.repo__tab--2:hover {
   background-color: #ffbb00;
 }
 
-.vouchers__tab--3:hover {
+.repo__tab--3:hover {
   background-color: #4bbb7d;
 }
 
-.vouchers__tab--active {
+.repo__tab--active {
   -webkit-transform: translateY(-66%);
           transform: translateY(-66%);
 }
@@ -160,7 +160,7 @@
   .project__icon {
     margin-bottom: var(--mb-3);
   }
-  .vouchers__tab {
+  .repo__tab {
     margin-right: 1rem;
   }
 }

@@ -89,9 +89,9 @@ fetch("https://api.github.com/users/bartek-wieckowski/repos?sort=create")
   .then((res) => res.json())
   .then((res) => {
     const container = document.querySelector(".portfolio__container--js");
-    const tabs1 = document.querySelector(".vouchers__tab--1");
-    const tabs2 = document.querySelector(".vouchers__tab--2");
-    const tabs3 = document.querySelector(".vouchers__tab--3");
+    const tabs1 = document.querySelector(".repo__tab--1");
+    const tabs2 = document.querySelector(".repo__tab--2");
+    const tabs3 = document.querySelector(".repo__tab--3");
 
     for (let repo of res) {
       const { description, homepage, html_url, name } = repo;
@@ -197,18 +197,18 @@ fetch("https://api.github.com/users/bartek-wieckowski/repos?sort=create")
 
   .catch((e) => console.log(e));
 
-const tabs = document.querySelectorAll(".vouchers__tab");
-const tabsContainer = document.querySelector(".vouchers__tab-container");
+const tabs = document.querySelectorAll(".repo__tab");
+const tabsContainer = document.querySelector(".repo__tab-container");
 
 // used event delegation
 
 tabsContainer.addEventListener("click", function (e) {
-  const clicked = e.target.closest(".vouchers__tab");
+  const clicked = e.target.closest(".repo__tab");
 
   //   guard clauses
   if (!clicked) return;
   // remove active classes
-  tabs.forEach((t) => t.classList.remove("vouchers__tab--active"));
+  tabs.forEach((t) => t.classList.remove("repo__tab--active"));
   // active tab
-  clicked.classList.add("vouchers__tab--active");
+  clicked.classList.add("repo__tab--active");
 });

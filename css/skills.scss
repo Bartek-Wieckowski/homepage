@@ -38,9 +38,9 @@
     .skills {
         &__container {
             grid-template-columns: repeat(2, 1fr);
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
+            -webkit-box-align: baseline;
+            -ms-flex-align: baseline;
+            align-items: baseline;
         }
         &__content {
             min-height: 600px;
@@ -54,9 +54,6 @@
     .skills {
         &__container {
             grid-template-columns: repeat(3, 1fr);
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
         }
         &__content {
             -webkit-transition: 0.3s ease;

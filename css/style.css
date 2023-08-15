@@ -1,8 +1,8 @@
-@import url("../css/skills.css");
-@import url("../css/home.css");
-@import url("../css/about.css");
-@import url("../css/portfolio.css");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url('../css/skills.css');
+@import url('../css/home.css');
+@import url('../css/about.css');
+@import url('../css/portfolio.css');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 /* --**VARIABLES CSS**-- */
 :root {
   --height: 3rem;
@@ -15,7 +15,7 @@
   --bg-project: #212528;
   --bg-project-alt: #1e1e1e;
   --bg-project-circle: rgb(70, 63, 63);
-  --body-font: "Poppins", sans-serif;
+  --body-font: 'Poppins', sans-serif;
   --biggest-font-size: 3.5rem;
   --big-font-size: 3rem;
   --huge-font-size: 1.75rem;
@@ -59,7 +59,7 @@
 ::before,
 ::after {
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
@@ -130,12 +130,17 @@ img {
 .section--hidden {
   opacity: 0;
   -webkit-transform: translateY(8rem);
-          transform: translateY(8rem);
+  transform: translateY(8rem);
 }
 
 .section__title,
 .section__subtitle {
   text-align: center;
+}
+.current-info {
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 /* --**LAYOUT**-- */
@@ -170,11 +175,11 @@ img {
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 @media screen and (max-width: 768px) {
@@ -258,7 +263,7 @@ img {
 }
 
 .active-link::before {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -0.35rem;
   left: 45%;
@@ -275,7 +280,7 @@ img {
 
 .award::after {
   display: block;
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;

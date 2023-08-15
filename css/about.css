@@ -6,6 +6,7 @@
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+  overflow-x: hidden;
 }
 
 .about__data {
@@ -51,9 +52,6 @@ a.tooltip:hover span {
   border-radius: 1rem;
 }
 
-.callout--about {
-}
-
 .callout--prog {
   height: 250px;
   width: 250px;
@@ -70,6 +68,12 @@ a.tooltip:hover span {
   .callout--about {
     width: 200px;
     left: -25px;
+  }
+}
+@media screen and (max-width: 375.98px) {
+  .callout--about {
+    width: 200px;
+    left: 20%;
   }
 }
 /*# sourceMappingURL=about.css.map */

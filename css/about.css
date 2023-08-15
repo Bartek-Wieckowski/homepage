@@ -24,6 +24,7 @@
 /* --**TOOLTIP**-- */
 a.tooltip {
   color: var(--color-alt);
+  position: relative;
 }
 
 a.tooltip:hover {

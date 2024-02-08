@@ -1,181 +1,49 @@
-const navigationBar = document.querySelector(".nav__menu--js");
-const hamburger = document.querySelector(".nav__toggle--js");
-const allMenuLinks = document.querySelectorAll(".nav__item");
-const allTitles = document.querySelectorAll(".section__title");
-const allSubtitles = document.querySelectorAll(".section__subtitle");
-const sections = document.querySelectorAll(".section[id]");
-const nav = document.querySelector(".nav");
+import { setThemeFromLocalStorage, saveThemeToLocalStorage } from './theme.js';
+import { renderAboutMeText } from './aboutMe.js';
+import { renderTabs } from './tabs.js';
+import { aboutDescribe, tabsTitle } from './lang.js';
 
-const tabs = document.querySelectorAll(".repo__tab");
-const tabsContainer = document.querySelector(".repo__tab-container");
-const container = document.querySelector(".portfolio__container--js");
-const tabs1 = document.querySelector(".repo__tab--1");
-const tabs2 = document.querySelector(".repo__tab--2");
-const tabs3 = document.querySelector(".repo__tab--3");
+document.addEventListener('DOMContentLoaded', function () {
+  const body = document.querySelector('body');
+  const themeToggler = document.querySelector('.theme-toggle');
+  const themeTogglerSun = document.querySelector('.toggler-theme-sun');
+  const themeTogglerMoon = document.querySelector('.toggler-theme-moon');
 
-// create function - show navigation after click hamburger
+  const EN = document.querySelector('#EN');
+  const PL = document.querySelector('#PL');
 
-const showMenu = function () {
-  navigationBar.classList.toggle("show-menu");
-  hamburger.classList.toggle("toggle");
-};
+  setThemeFromLocalStorage(body, themeTogglerSun, themeTogglerMoon);
 
-hamburger.addEventListener("click", showMenu);
+  themeToggler.addEventListener('click', () => {
+    body.classList.toggle('light-theme');
+    themeTogglerSun.classList.toggle('active');
+    themeTogglerMoon.classList.toggle('active');
 
-// closing the hamburger menu after clicking a link
-
-allMenuLinks.forEach((link) =>
-  link.addEventListener("click", () => {
-    navigationBar.classList.remove("show-menu");
-    hamburger.classList.remove("toggle");
-  })
-);
-
-// hover fade animation in navigation
-
-const handleHover = function (e) {
-  if (e.target.classList.contains("nav__link")) {
-    const link = e.target;
-    const siblings = link.closest(".nav").querySelectorAll(".nav__link");
-    const logo = link.closest(".nav").querySelector(".nav__logo");
-
-    siblings.forEach((el) => {
-      if (el !== link) el.style.opacity = this;
-    });
-    logo.style.opacity = this;
-  }
-};
-nav.addEventListener("mouseover", handleHover.bind(0.5));
-nav.addEventListener("mouseout", handleHover.bind(1));
-
-// active nav-link when we scroll in page
-
-function scrollActive() {
-  const scrollY = window.pageYOffset;
-
-  sections.forEach((current) => {
-    const sectionHeight = current.offsetHeight;
-    const sectionTop = current.offsetTop - 100;
-    sectionId = current.getAttribute("id");
-
-    if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.add("active-link");
-    } else {
-      document
-        .querySelector(".nav__menu a[href*=" + sectionId + "]")
-        .classList.remove("active-link");
-    }
+    const theme = body.classList.contains('light-theme')
+      ? 'light-theme'
+      : 'dark-theme';
+    saveThemeToLocalStorage(theme);
   });
-}
-window.addEventListener("scroll", scrollActive);
 
-//revealing elements on scroll
+  let lang = 'EN';
+  renderAboutMeText(lang, aboutDescribe);
+  renderTabs(lang, tabsTitle);
 
-const revealSection = function (entries, observer) {
-  const [entry] = entries;
-  if (!entry.isIntersecting) return;
-  entry.target.classList.remove("section--hidden");
-  observer.unobserve(entry.target);
-};
+  if (EN) {
+    EN.addEventListener('click', function (event) {
+      event.preventDefault();
+      lang = 'EN';
+      renderAboutMeText(lang, aboutDescribe);
+      renderTabs(lang, tabsTitle);
+    });
+  }
 
-const sectionObserver = new IntersectionObserver(revealSection, {
-  root: null,
-  threshold: 0.15,
+  if (PL) {
+    PL.addEventListener('click', function (event) {
+      event.preventDefault();
+      lang = 'PL';
+      renderAboutMeText(lang, aboutDescribe);
+      renderTabs(lang, tabsTitle);
+    });
+  }
 });
-
-allTitles.forEach(function (section) {
-  sectionObserver.observe(section);
-  section.classList.add("section--hidden");
-});
-allSubtitles.forEach(function (section) {
-  sectionObserver.observe(section);
-  section.classList.add("section--hidden");
-});
-
-// connect to github repositories
-
-fetch("https://api.github.com/users/bartek-wieckowski/repos?sort=create")
-  .then((res) => res.json())
-  .then((res) => {
-    for (let repo of res) {
-      const { description, homepage, html_url, name } = repo;
-      let template = document.createElement("article");
-      template.setAttribute("class", "project");
-      template.innerHTML = `
-      <div class="project__window">
-          <span class="project__circle project__circle--red"></span>
-          <span class="project__circle project__circle--yellow"></span>
-          <span class="project__circle project__circle--green"></span>
-      </div>
-      <div class="project__content">
-          <i class='bx bxl-github project__icon'></i>
-          <h3 class="project__grid project__title">
-              <span class="project__label">project:</span><span class="project__name">${name}</span>
-          </h3>
-          <p class="project__grid"><span class="project__label">description:</span><span
-                  class="project__label--description">${description}</span>
-          </p>
-          <p class="project__grid"><span class="project__label">demo:</span><span><a target="_blank" rel="noopener noreferrer" href="${homepage}"
-                      title="${name} - demo" class="project__link">&lt;see_here&gt;</a></span></p>
-          <p class="project__grid"><span class="project__label">github:</span><span><a target="_blank" rel="noopener noreferrer" href="${html_url}"
-                      title="${name} - code" class="project__link">&lt;source_code&gt;</a></span></p>
-      </div>
-    </article>`;
-      const template1 = template;
-      const template2 = template;
-      const template3 = template;
-
-      const optionsOne = function () {
-        if (description === "Website") {
-          container.appendChild(template);
-        } else if (description !== "Website") {
-          template2.remove(template);
-          template3.remove(template);
-        }
-      };
-      tabs1.addEventListener("click", optionsOne);
-
-      const optionsTwo = function () {
-        if (description === "JavaScript") {
-          container.appendChild(template);
-        } else if (description !== "JavaScript") {
-          template1.remove(template);
-          template3.remove(template3);
-        }
-      };
-      tabs2.addEventListener("click", optionsTwo);
-
-      const optionsThree = function () {
-        if (description === "Another") {
-          container.appendChild(template);
-        } else if (description !== "Another") {
-          template1.remove(template);
-          template2.remove(template);
-        }
-      };
-      tabs3.addEventListener("click", optionsThree);
-    }
-  })
-
-  .catch((e) => console.log(e));
-
-// TABS component
-
-tabsContainer.addEventListener("click", function (e) {
-  const clicked = e.target.closest(".repo__tab");
-
-  //   guard clauses
-  if (!clicked) return;
-  // remove active classes
-  tabs.forEach((t) => t.classList.remove("repo__tab--active"));
-  // active tab
-  clicked.classList.add("repo__tab--active");
-});
-
-// funny greetings ;)
-
-console.log(
-  `Hello visitor👋 it's great that you're looking at the console.log😉`
-);

@@ -13,359 +13,48 @@
   </head>
 
   <body>
-    <!-- **HEADER and NAV** -->
-    <header class="header" id="header">
-      <nav class="nav container">
-        <a href="#" class="nav__logo">theBart</a>
-        <div class="nav__menu nav__menu--js">
-          <ul class="nav__list">
-            <li class="nav__item">
-              <a href="#home" class="nav__link active-link">HOME</a>
-            </li>
-            <li class="nav__item">
-              <a href="#skills" class="nav__link">SKILLS</a>
-            </li>
-            <li class="nav__item">
-              <a href="#about" class="nav__link">ABOUT</a>
-            </li>
-            <li class="nav__item">
-              <a href="#portfolio" class="nav__link">PORTFOLIO</a>
-            </li>
-            <li class="nav__item">
-              <a href="#contact" class="nav__link">CONTACT</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="nav__toggle nav__toggle--js">
-          <div class="line1"></div>
-          <div class="line2"></div>
-          <div class="line3"></div>
-        </div>
+    <header>
+      <nav>
+        <ul>
+          <li class="theme-toggle">
+            <span class="toggler-theme-sun"><i class='bx bxs-sun'></i></span>
+            <span class="toggler-theme-moon"><i class='bx bxs-moon'></i></span>
+          </li>
+          <li class="lang-toggle">
+            <a href="javascript:;" id="PL">PL</a>&nbsp;/&nbsp;
+            <a href="javascript:;" id="EN">EN</a>
+          </li>
+        </ul>
       </nav>
     </header>
-
     <main>
-      <!-- **HOME** -->
-
-      <section class="home section" id="home">
-        <div class="home__container container grid">
-          <article class="home__data">
-            <h1 class="home__title">Hi! I`m Bart!</h1>
-            <p class="home__description">Frontend Developer</p>
-            <h2 class="home__subtitle">
-              Let me <span class="award">tell you</span> about myself<br />
-              and look at
-              <span class="award">my projects</span>
-            </h2>
-            <a href="#portfolio" class="button">View Projects</a>
-          </article>
-
-          <div class="home__img">
-            <svg
-              class="home__blob"
-              viewBox="0 0 200 187"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlns:xlink="http://www.w3.org/1999/xlink"
+      <section class="me-intro" id="me-intro">
+        <div class="me-intro-wrapper">
+          <img src="/img/me.png" alt="Bartek Wieckowski" class="me-img" />
+          <div class="me-intro-details">
+            <div class="effect-wrapper">
+              <div class="dot-effect"></div>
+              <h1>Bartek Więckowski</h1>
+            </div>
+            <h2>Frontend Developer</h2>
+            <a href="mailto:bart.it.pro@gmail.com" _target="blank"
+              >bart.it.pro@gmail.com</a
             >
-              <mask id="mask0" mask-type="alpha">
-                <path
-                  d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
-                        130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
-                        97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
-                        0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
-                />
-              </mask>
-              <g mask="url(#mask0)">
-                <path
-                  d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
-                        165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
-                        129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
-                        -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
-                />
-
-                <image
-                  class="home__blob-img"
-                  x="12"
-                  y="18"
-                  xlink:href="img/ja-removebg.png"
-                />
-              </g>
-            </svg>
           </div>
         </div>
-        <div class="wave" style="height: 150px; overflow: hidden">
-          <svg
-            viewBox="0 0 500 150"
-            preserveAspectRatio="none"
-            style="height: 100%; width: 100%"
-          >
-            <path
-              d="M0.00,49.99 C150.00,150.00 349.20,-49.99 500.00,49.99 L500.00,150.00 L0.00,150.00 Z"
-            ></path>
-          </svg>
-        </div>
       </section>
-
-      <!-- **SKILLS** -->
-
-      <section class="skills section section--pad" id="skills">
-        <h2 class="section__title">Skills</h2>
-        <p class="section__subtitle">
-          You might be interested of cheking my skills
-        </p>
-        <div class="skills__container container grid">
-          <article class="skills__content">
-            <span class="skills__emoji">💪</span>
-            <div class="skills__data">
-              <h3 class="skills__data--title">Working knowledge</h3>
-              <ul class="skills__list">
-                <li class="skills__item">Semantic HTML, BEM</li>
-                <li class="skills__item">Form</li>
-                <li class="skills__item">
-                  Flexbox, CSS Grid, CSS animations, SCSS
-                </li>
-                <li class="skills__item">Bootstrap</li>
-                <li class="skills__item">Tailwind CSS</li>
-                <li class="skills__item">JS: fundamentals</li>
-                <li class="skills__item">JS: local storage</li>
-                <li class="skills__item">JS: DOM manipulation</li>
-                <li class="skills__item">JS ES6 + features</li>
-                <li class="skills__item">jQuery, Alpine.js</li>
-                <li class="skills__item">Working with API</li>
-                <li class="skills__item">NPM scripts</li>
-                <li class="skills__item">GIT - basics</li>
-                <li class="skills__item">Figma</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="skills__content">
-            <span class="skills__emoji">❓</span>
-            <div class="skills__data">
-              <h3 class="skills__data--title">Know something about</h3>
-              <ul class="skills__list">
-                <li class="skills__item">Accesibility</li>
-                <li class="skills__item">Angular</li>
-                <li class="skills__item">VUE</li>
-                <li class="skills__item">REACT</li>
-                <li class="skills__item">Framer Motion</li>
-                <li class="skills__item">PHP</li>
-                <li class="skills__item">Yii 1, Yii 2</li>
-                <li class="skills__item">Laravel</li>
-                <li class="skills__item">MySQL</li>
-                <li class="skills__item">MongoDB</li>
-                <li class="skills__item">Firebase</li>
-                <li class="skills__item">Postman</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="skills__content">
-            <span class="skills__emoji">🎓</span>
-            <div class="skills__data">
-              <h3 class="skills__data--title">Want to learn</h3>
-              <ul class="skills__list">
-                <li class="skills__item">JavaScript - to expert level</li>
-                <li class="skills__item">React - to expert level</li>
-                <li class="skills__item">Next.js</li>
-                <li class="skills__item">Redux</li>
-                <li class="skills__item">Node.js</li>
-                <li class="skills__item">Server side rendering</li>
-                <li class="skills__item">Typescript</li>
-              </ul>
-            </div>
-          </article>
-        </div>
+      <section class="me-about" id="me-about"">
+        <div class="me-about-wrapper"></div>
       </section>
-
-      <!-- **ABOUT** -->
-      <div class="wave wave--alt" style="height: 150px; overflow: hidden">
-        <svg
-          viewBox="0 0 500 150"
-          preserveAspectRatio="none"
-          style="height: 100%; width: 100%"
-        >
-          <path
-            d="M0.00,49.99 C150.00,150.00 349.20,-49.99 500.00,49.99 L500.00,150.00 L0.00,150.00 Z"
-          ></path>
-        </svg>
-      </div>
-      <section class="about section section--pad" id="about">
-        <h2 class="section__title">About</h2>
-        <p class="section__subtitle">
-          I'll tell you about myself in a few words
-        </p>
-
-        <div class="about__container container grid">
-          <article class="about__data">
-            <h3 class="about__data--sport">Sport</h3>
-            <p class="about__description">
-              I am 33 years old and I am passionate about sports.<br />
-              Sport is in my life since childhood.<br />I started with soccer
-              and then the world of
-              <a href="#about" class="tooltip"
-                >CrossFit
-                <span>
-                  <img class="callout callout--about" src="img/bcross.jpg" />
-                </span>
-              </a>
-              was an option for me to work as a coach and player of this
-              discipline.
-            </p>
-          </article>
-
-          <article class="about__data">
-            <h3 class="about__data--programming">Programming</h3>
-            <p class="about__description">
-              At the end of 2020 I had the idea to start developing my passion,
-              which was also interesting for me since childhood -
-              <a href="#about" class="tooltip"
-                >programming.
-                <span>
-                  <img class="callout callout--prog" src="img/bprog.jpg" />
-                </span>
-              </a>
-              <br /><br />
-              Everyday I develop in this direction to fulfill dream which is to
-              become a expert frontend developer.
-            </p>
-          </article>
-
-          <article class="about__data">
-            <h3 class="about__data--curiosity">Curiosity</h3>
-            <p class="about__description">
-              I also have a wonderful family! I am a happy dad and I have a
-              loving wife!
-              <br />
-              My wife and I are the
-              <a href="#about" class="tooltip"
-                >owners
-                <span>
-                  <img
-                    class="callout callout--curiosity"
-                    src="img/bcurio.jpg"
-                  />
-                </span>
-              </a>
-              of our own beauty salon!
-              <br />
-              My wife rocks! 😍
-            </p>
-          </article>
-        </div>
-        <div class="wave" style="height: 150px; overflow: hidden">
-          <svg
-            viewBox="0 0 500 150"
-            preserveAspectRatio="none"
-            style="height: 100%; width: 100%"
-          >
-            <path
-              d="M0.00,49.99 C150.00,150.00 349.20,-49.99 500.00,49.99 L500.00,150.00 L0.00,150.00 Z"
-            ></path>
-          </svg>
-        </div>
+      <section class="tabs" id="tabs">
+        <ul class="tabs-wrapper"></ul>
+        <div class="tab-content"></div>
       </section>
-
-      <!-- **PORTFOLIO* -->
-
-      <section class="portfolio section section--pad" id="portfolio">
-        <h2 class="section__title">Recent projects</h2>
-        <p class="section__subtitle current-info">
-          I started my frontend developer path at the end of 2020.<br />I have
-          been working as a front-end developer since the beginning of November
-          2021 until today.<br />
-          These projects were made at the beginning of my path, but I am not
-          ashamed of them and I still want to show them 😊
-        </p>
-        <p class="section__subtitle current-info">
-          At work I mainly create sales and pre-sales landing pages and I
-          develop and implement ideas for e-commerce shops, if we get in touch
-          then I will be happy to share examples of my work related to these
-          topics.
-        </p>
-        <p class="section__subtitle current-info">
-          Also on my
-          <a
-            href="https://github.com/Bartek-Wieckowski?tab=repositories"
-            target="_blank"
-            ><span class="award">GitHub</span></a
-          >
-          there are already several projects on REACT, because in this library I
-          would like to do as many projects as possible 😉
-        </p>
-        <p class="section__subtitle current-info">
-          PS. Some of my small REACT exercises are on
-          <a href="https://codesandbox.io/u/bartek-wieckowski" target="_blank"
-            ><span class="award">CodeSandbox</span></a
-          >
-        </p>
-
-        <article class="repo container">
-          <div class="repo__tab-container">
-            <button class="btn repo__tab repo__tab--1" data-tab="1">
-              Websites
-            </button>
-            <button class="btn repo__tab repo__tab--2" data-tab="2">
-              JavaScript
-            </button>
-            <button class="btn repo__tab repo__tab--3" data-tab="3">
-              Others
-            </button>
-          </div>
-        </article>
-
-        <div
-          class="portfolio__container container grid portfolio__container--js"
-        ></div>
-      </section>
-
-      <!-- **CONTACT* -->
-
-      <footer class="contact section section--pad" id="contact">
-        <h2 class="section__title">Contact me</h2>
-        <p class="section__subtitle">
-          I`m open for a new opportunities.<br />If you have one for me
-          <span class="award award--alt">we should talk!</span>
-        </p>
-
-        <div class="contact__container container grid">
-          <ul class="socials">
-            <li class="socials__item">
-              <a
-                href="https://github.com/Bartek-Wieckowski?tab=repositories"
-                target="_blank"
-                class="socials__link"
-                ><i class="bx bxl-github socials__icon"></i
-              ></a>
-            </li>
-
-            <li class="socials__item">
-              <a
-                href="https://www.instagram.com/barto019/?hl=pl"
-                target="_blank"
-                class="socials__link"
-                ><i class="bx bxl-instagram socials__icon"></i
-              ></a>
-            </li>
-
-            <li class="socials__item">
-              <a
-                href="https://pl-pl.facebook.com/bartosz.wieckowski.1"
-                target="_blank"
-                class="socials__link"
-                ><i class="bx bxl-facebook-square socials__icon"></i
-              ></a>
-            </li>
-          </ul>
-          <a href="mailto:bart.it.pro@gmail.com" class="contact__mail"
-            >bart.it.pro@gmail.com</a
-          >
-        </div>
-        <p class="copy">&#169; theBart 2023. All right reserved</p>
-      </footer>
     </main>
+    <div class="loader-container">
+      <div class="loader"></div>
+    </div>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js" type="module"></script>
   </body>
 </html>

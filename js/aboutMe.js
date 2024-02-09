@@ -20,7 +20,7 @@ export function renderAboutMeText(lang, aboutDescribe) {
       icon.classList.add('bx', 'bx-redo');
       p.appendChild(icon);
       icon.addEventListener('click', () => {
-        const tabsSection = document.querySelector('.tabs');
+        const tabsSection = document.querySelector('.main-projects');
         if (tabsSection) {
           tabsSection.scrollIntoView({ behavior: 'smooth' });
         }

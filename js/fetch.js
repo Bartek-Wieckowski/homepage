@@ -30,9 +30,9 @@ function displayRepositories(repos, target) {
     template.setAttribute('class', 'project');
     template.innerHTML = `
             <div class="project-window">
-                <span class="project-circle project-circle--red"></span>
-                <span class="project-circle project-circle--yellow"></span>
-                <span class="project-circle project-circle--green"></span>
+                <span class="project-circle project-circle--red" aria-hidden="true"></span>
+                <span class="project-circle project-circle--yellow" aria-hidden="true"></span>
+                <span class="project-circle project-circle--green" aria-hidden="true"></span>
             </div>
             <div class="project-content">
                 <i class='bx bxl-github project-icon'></i>

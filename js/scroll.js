@@ -21,3 +21,8 @@ function scrollToTabsSection() {
 
 window.addEventListener('scroll', checkScrollPosition);
 scrollArrow.addEventListener('click', scrollToTabsSection);
+scrollArrow.addEventListener('keypress', (event) => {
+  if (event.key === 'Enter') {
+    scrollToTabsSection();
+  }
+});

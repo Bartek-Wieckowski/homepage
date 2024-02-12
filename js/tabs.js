@@ -13,11 +13,23 @@ export function renderTabs(lang, tabsContent) {
   tabsContent[lang].forEach((desc, index) => {
     const li = document.createElement('li');
     li.textContent = desc;
+    li.setAttribute('role', 'tab');
+    li.setAttribute('tabindex', '0');
     if (index === 0) {
       li.classList.add('active');
       renderWorkExpText(lang, workExperienceDetails, 'tab-content-work-exp');
     }
     li.addEventListener('click', () => {
+      activateTab(index);
+    });
+
+    li.addEventListener('keypress', (event) => {
+      if (event.key === 'Enter') {
+        activateTab(index);
+      }
+    });
+
+    function activateTab(index) {
       document.querySelectorAll('.tabs-wrapper li').forEach((item) => {
         item.classList.remove('active');
       });
@@ -40,7 +52,7 @@ export function renderTabs(lang, tabsContent) {
       } catch (error) {
         console.error('Error fetching repositories:', error);
       }
-    });
+    }
 
     wrapper.appendChild(li);
   });

@@ -26,7 +26,6 @@ function displayRepositories(repos, target) {
 
   repos.forEach((repo) => {
     const { description, homepage, html_url, name } = repo;
-    console.log(homepage);
     let template = document.createElement('article');
     template.setAttribute('class', 'project');
     template.innerHTML = `

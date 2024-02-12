@@ -165,7 +165,7 @@ nav ul {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 4rem;
 }
 
 main {
@@ -186,21 +186,22 @@ main {
   position: relative;
 }
 
-.theme-toggle span {
+.theme-toggle a {
   position: absolute;
   transition: all 0.3s ease;
   opacity: 1;
   visibility: visible;
+  color: var(--text-color);
 }
 
-.theme-toggle span.active {
+.theme-toggle a.active {
   transition: all 0.3s ease;
   opacity: 0;
   visibility: hidden;
 }
 
 .lang-toggle a {
-  font-size: var(--small-font-size);
+  font-size: var(--normal-font-size);
   text-decoration: underline;
   color: var(--text-color);
 }
@@ -532,17 +533,23 @@ footer {
   position: fixed;
   bottom: 20px;
   right: 20px;
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  background-color: var(--tabs-bg);
+  text-align: center;
+  line-height: 1.5rem;
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
   cursor: pointer;
-  font-size: var(--huge-font-size);
+  font-size: 1.5rem;
 }
 
 .scroll-arrow.visible {
   opacity: 1;
 }
 
-.scroll-arrow:hover {
+.scroll-arrow:hover > div {
   animation: bounce 0.5s infinite alternate;
 }
 
@@ -619,7 +626,6 @@ footer {
     text-align: left;
     padding: unset;
     gap: unset;
-    
   }
   .tab-content {
     grid-template-columns: 1fr 1fr;
@@ -632,5 +638,22 @@ footer {
 
   .project-content {
     padding: 1.5rem 0 6rem 3.5rem;
+  }
+
+  .scroll-arrow {
+    height: 4rem;
+    width: 4rem;
+    line-height: 3rem;
+    font-size: 3rem;
+  }
+}
+
+@media screen and (min-width: 968px) {
+  nav ul {
+    gap: 2rem;
+  }
+
+  .lang-toggle a {
+    font-size: var(--small-font-size);
   }
 }

@@ -1,19 +1,17 @@
 export const aboutDescribe = {
   EN: [
-    'I began my coding adventure in November 2020.',
     'My passion is to create modern, visually appealing websites and apps, enriched with animations.',
     'I am always committed to my work and ready to take on challenges.',
     'Technologies I use:',
-    "HTML, CSS, JavaScript, TypeScript, React, Next.js, Gatsby.js, Redux, TanstackQuery, REST API's, GIT, Firebase, Supabase",
+    'JavaScript, TypeScript, React, Next.js, Sanity CMS, PostgreSql, Supabase, Tailwind CSS, Node.js, Stripe',
     "Let's take a look at my projects.",
   ],
 
   PL: [
-    'Swoją przygodę z kodowaniem rozpocząłem w listopadzie 2020 roku.',
     'Moją pasją jest tworzenie nowoczesnych, atrakcyjnych wizualnie stron internetowych oraz aplikacji, wzbogaconych o animacje.',
     'Zawsze jestem zaangażowany w swoją pracę i gotowy do podejmowania wyzwań.',
     'Technologie, z których korzystam:',
-    "HTML, CSS, JavaScript, TypeScript, React, Next.js, Gatsby.js, Redux, TanstackQuery, REST API's, GIT, Firebase, Supabase",
+    'JavaScript, TypeScript, React, Next.js, Sanity CMS, PostgreSql, Supabase, Tailwind CSS, Node.js, Stripe',
     'Przyjrzyjmy się moim projektom',
   ],
 };

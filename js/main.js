@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
       body.classList.remove('lang-pl');
       renderAboutMeText(lang, aboutDescribe);
       renderTabs(lang, tabsTitle);
+      renderBestProjects(lang);
     });
   }
 
@@ -54,6 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
       body.classList.add('lang-pl');
       renderAboutMeText(lang, aboutDescribe);
       renderTabs(lang, tabsTitle);
+      renderBestProjects(lang);
     });
   }
 
@@ -63,5 +65,5 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', async () => {
   await fetchRepositoriesData();
-  renderBestProjects();
+  renderBestProjects(lang);
 });

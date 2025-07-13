@@ -1,0 +1,23 @@
+name: Deploy Static Site
+
+on:
+  push:
+    branches: [master]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy files to server
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.HOST_SSH_KEY_P }}
+          source: "index.html,css/,img/,js/"
+          target: "/home/${{ secrets.USERNAME }}/domains/developedbybart.pl/public_nodejs/public/"
+          strip_components: 0

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
 @keyframes pulse {
   0% {
@@ -41,7 +41,7 @@
   --second-color: #007cc7;
   --second-color-alt: #203647;
 
-  --body-font: 'Poppins', sans-serif;
+  --body-font: "Poppins", sans-serif;
   --biggest-font-size: 3.5rem;
   --big-font-size: 3rem;
   --huge-font-size: 1.75rem;
@@ -383,7 +383,7 @@ main {
 }
 
 .work-experience-wrapper .company-description-text::before {
-  content: '\25A0';
+  content: "\25A0";
   display: inline-block;
   width: 0.5rem;
   margin-right: 0.5rem;
@@ -591,6 +591,187 @@ footer {
   color: #282c35;
 }
 
+.main-projects-content {
+  display: block;
+  width: 100%;
+}
+
+.main-projects-swiper {
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.main-projects-swiper .swiper-wrapper {
+  width: 100%;
+  display: flex;
+}
+
+.main-projects-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-shrink: 0;
+  height: auto;
+}
+
+.main-projects-swiper .project {
+  width: 100%;
+  margin: 0;
+  display: block;
+}
+
+.swiper-pagination-bullet {
+  background-color: var(--second-color);
+  opacity: 0.5;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: var(--second-color);
+}
+
+.main-projects-swiper .swiper-pagination {
+  position: static !important;
+  margin-top: 1.5rem;
+  text-align: center;
+  width: 100% !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  top: auto !important;
+  transform: none !important;
+  white-space: nowrap;
+}
+
+.main-projects-swiper
+  .swiper-pagination.swiper-pagination-bullets.swiper-pagination-bullets-dynamic {
+  position: static !important;
+  left: auto !important;
+  right: auto !important;
+  transform: none !important;
+  width: 100% !important;
+}
+
+.swiper-pagination-bullet {
+  background-color: var(--second-color);
+  opacity: 0.5;
+  margin: 0 0.25rem;
+}
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: var(--second-color);
+}
+
+.projects-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1rem;
+  min-height: 200px;
+}
+
+.projects-loader-spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid var(--bg-project-alt);
+  border-top: 3px solid var(--second-color);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+.projects-loader-text {
+  color: var(--text-color);
+  font-size: var(--normal-font-size);
+  opacity: 0.7;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.technologies-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  margin: 1rem 0;
+  padding: 1rem 0;
+}
+
+.logo-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.tech-logo {
+  height: 1.5rem;
+  width: auto;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.tech-logo:hover {
+  transform: scale(1.1);
+}
+
+.spin-animation {
+  animation: spin 3s linear infinite;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--tabs-bg);
+  color: var(--text-color);
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 1000;
+  margin-bottom: 0.5rem;
+}
+
+.tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 0.5rem solid transparent;
+  border-top-color: var(--tabs-bg);
+}
+
+.logo-wrapper:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Light theme adjustments */
+.light-theme .tooltip {
+  background-color: var(--bg-project-alt);
+  color: var(--body-color);
+}
+
+.light-theme .tooltip::after {
+  border-top-color: var(--bg-project-alt);
+}
+
 @media screen and (min-width: 398px) {
   .tabs-wrapper {
     gap: 2rem;
@@ -616,13 +797,9 @@ footer {
     margin-block: unset;
   }
 
-  .main-projects-content {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .project {
     width: 100%;
-    max-width: 550px;
+    max-width: 35rem;
   }
 
   .project-label {
@@ -646,6 +823,15 @@ footer {
 
   .lang-pl .main-projects-tabs li {
     font-size: var(--normal-font-size);
+  }
+
+  .technologies-logos {
+    gap: 0.75rem;
+  }
+
+  .tooltip {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
   }
 }
 
@@ -698,6 +884,10 @@ footer {
     text-align: left;
     padding: unset;
     gap: unset;
+  }
+
+  .technologies-logos {
+    gap: 1.5rem;
   }
 }
 

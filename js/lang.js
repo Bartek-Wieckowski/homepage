@@ -62,6 +62,18 @@ export const tabsTitle = {
 export const workExperienceDetails = {
   EN: [
     {
+      company: "Rarraba",
+      position: "JAMStack Developer",
+      startDate: "july 2025",
+      endDate: "(2.5 weeks)",
+      technologies: "Next.js / TypeScript / Sanity CMS / Tailwind CSS",
+      description: [
+        "Implementation of the website design in cooperation with the design team (Studio247)",
+        "The website was made to attractively present the company's business, with an emphasis on modern design and smooth animations to improve the user experience.",
+        "Modern front-end technologies were used in the project, ensuring responsiveness and high performance of the application.",
+      ],
+    },
+    {
       company: "Roark",
       position: "JAMStack Developer",
       startDate: "june 2025",
@@ -139,6 +151,18 @@ export const workExperienceDetails = {
     },
   ],
   PL: [
+    {
+      company: "Rarraba",
+      position: "JAMStack Developer",
+      startDate: "lipiec 2025",
+      endDate: "(2.5 tyg.)",
+      technologies: "Next.js / TypeScript / Sanity CMS / Tailwind CSS",
+      description: [
+        "Realizacja projektu strony w ramach współpracy z zespołem designerskim (Studio247).",
+        "Strona została wykonana w celu atrakcyjnej prezentacji działalności firmy, z naciskiem na nowoczesny design oraz płynne animacje poprawiające doświadczenie użytkownika.",
+        "W projekcie wykorzystano nowoczesne technologie frontendowe, zapewniając responsywność oraz wysoką wydajność aplikacji.",
+      ],
+    },
     {
       company: "Roark",
       position: "JAMStack Developer",

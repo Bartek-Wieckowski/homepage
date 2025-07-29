@@ -3,6 +3,10 @@ import { fetchRepositoriesData } from "./fetch.js";
 const paidProjects = {
   EN: [
     {
+      name: "Rarraba",
+      demo: "https://rarraba.vercel.app",
+    },
+    {
       name: "Roark",
       demo: "https://roark-lac.vercel.app",
     },
@@ -24,6 +28,10 @@ const paidProjects = {
     },
   ],
   PL: [
+    {
+      name: "Rarraba",
+      demo: "https://rarraba.vercel.app",
+    },
     {
       name: "Roark",
       demo: "https://roark-lac.vercel.app",

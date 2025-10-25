@@ -621,7 +621,7 @@ footer {
   display: block;
 }
 
-.swiper-pagination-bullet {
+/* .swiper-pagination-bullet {
   background-color: var(--second-color);
   opacity: 0.5;
 }
@@ -629,7 +629,7 @@ footer {
 .swiper-pagination-bullet-active {
   opacity: 1;
   background-color: var(--second-color);
-}
+} */
 
 .main-projects-swiper .swiper-pagination {
   position: static !important;
@@ -657,13 +657,13 @@ footer {
 }
 
 .swiper-pagination-bullet {
-  background-color: var(--second-color);
+  background-color: tomato !important;
   opacity: 0.5;
   margin: 0 0.25rem;
 }
 .swiper-pagination-bullet-active {
   opacity: 1;
-  background-color: var(--second-color);
+  background-color: tomato !important;
 }
 
 .projects-loader {
@@ -770,6 +770,94 @@ footer {
 
 .light-theme .tooltip::after {
   border-top-color: var(--bg-project-alt);
+}
+
+/* Video Modal Styles */
+.video-modal {
+  position: fixed;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8) translateY(0.625rem);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.video-modal.show {
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) translateY(0);
+  pointer-events: auto;
+}
+
+.video-modal-content {
+  position: relative;
+  background: var(--bg-project);
+  border-radius: 0.5rem;
+  width: 18rem;
+  max-width: calc(100vw - 2rem);
+  box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  pointer-events: auto;
+  overflow-x: hidden;
+}
+
+.video-modal-header {
+  padding: 0.75rem 1rem 0.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  pointer-events: auto;
+}
+
+.video-modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #ffffff;
+  font-size: 1.25rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.video-modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+}
+
+.video-modal-title {
+  color: #ffffff;
+  font-size: var(--small-font-size);
+  font-weight: 600;
+  margin: 0;
+}
+
+.video-modal-body {
+  padding: 0.5rem 1rem 1rem;
+  pointer-events: auto;
+}
+
+.video-modal-video {
+  width: 100%;
+  height: auto;
+  border-radius: 0.25rem;
+  background: #000;
+  max-height: 20rem;
+  object-fit: contain;
+  display: block;
+}
+
+.project-preview-link {
+  position: relative;
 }
 
 @media screen and (min-width: 398px) {
@@ -888,6 +976,37 @@ footer {
 
   .technologies-logos {
     gap: 1.5rem;
+  }
+
+  /* Video Modal Desktop Styles */
+  .video-modal-content {
+    width: 25rem;
+    max-width: 90vw;
+  }
+
+  .video-modal-header {
+    padding: 1rem 1.5rem 0.75rem;
+  }
+
+  .video-modal-title {
+    font-size: var(--h3-font-size);
+  }
+
+  .video-modal-body {
+    padding: 0.75rem 1.5rem 1.5rem;
+  }
+
+  .video-modal-video {
+    max-height: 18.75rem;
+    object-fit: contain;
+  }
+
+  .video-modal-close {
+    top: 0.75rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    width: 2rem;
+    height: 2rem;
   }
 }
 

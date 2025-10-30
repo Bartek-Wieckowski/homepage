@@ -10,32 +10,23 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/notatki/notes.css" />
-    
   </head>
 
- 
-    <body>
-      <div class="container">
-        <aside id="sidebar">
-          <h2>📚 Kategorie</h2>
-          <div id="categories-container">
-            <div class="loading">Ładowanie kategorii</div>
-          </div>
-          <div id="notes-container">
-          </div>
-        </aside>
+  <body>
+    <div class="container">
+      <aside id="sidebar">
+        <a href="index.html" class="back-link">⬅️ Wróć do strony głównej</a>
+        <h2>📚 Kategorie</h2>
+        <div id="categories-container">
+          <div class="loading">Ładowanie kategorii</div>
+        </div>
+      </aside>
 
-        <main>
-          <div id="note-container">
-            <div class="empty-state">
-              <h2>👈 Wybierz notatkę z menu</h2>
-              <p>Kliknij na tytuł notatki, aby wyświetlić jej treść</p>
-            </div>
-          </div>
-        </main>
-      </div>
+      <main>
+        <div id="notes-list"></div>
+      </main>
+    </div>
 
-      <script src="js/notatki/notes.js"></script>
-    </body>
-  </html>
+    <script src="js/notatki/notes.js"></script>
+  </body>
 </html>

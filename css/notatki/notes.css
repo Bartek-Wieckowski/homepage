@@ -6,7 +6,7 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #f5f5f5;
+  background: #282c35;
   color: #333;
 }
 
@@ -29,6 +29,13 @@ aside h2 {
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
   border-bottom: 2px solid #3498db;
+}
+
+.back-link {
+  display: block;
+  margin-bottom: 1.5rem;
+  text-decoration: none;
+  color: #3498db;
 }
 
 .category {
@@ -77,6 +84,38 @@ main {
   padding: 3rem;
   max-width: 900px;
   margin: 0 auto;
+}
+
+/* Notes grid in main */
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.note-card {
+  border-radius: 10px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  background: #ffffff;
+  color: #2c3e50;
+}
+
+.note-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+.note-card-title {
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.note-card-excerpt {
+  font-size: 0.95rem;
+  opacity: 0.9;
 }
 
 .note-header {
@@ -135,6 +174,24 @@ main {
   margin: 1rem 0;
 }
 
+/* Obrazy i figury wewnątrz treści notatki */
+.note-content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+}
+
+.note-content figure {
+  margin: 1.25rem 0;
+}
+
+.note-content figcaption {
+  font-size: 0.85rem;
+  color: #7f8c8d;
+  margin-top: 0.4rem;
+}
+
 .note-content ul,
 .note-content ol {
   margin-left: 2rem;
@@ -172,6 +229,47 @@ main {
   }
 }
 
+/* Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000;
+}
+
+.modal {
+  background: #fff;
+  width: 100%;
+  max-width: 900px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 10px;
+  position: relative;
+  padding: 2rem;
+}
+
+.modal-close {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.75rem;
+  background: transparent;
+  border: none;
+  color: #7f8c8d;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .modal {
+    padding: 1rem;
+  }
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   .container {
@@ -189,5 +287,9 @@ main {
 
   .note-header h1 {
     font-size: 2rem;
+  }
+
+  .notes-grid {
+    grid-template-columns: 1fr;
   }
 }

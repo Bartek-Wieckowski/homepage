@@ -153,7 +153,7 @@ img {
 
 header {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   max-width: 1960px;
   width: 100%;
   margin-inline: auto;
@@ -202,6 +202,12 @@ main {
 
 .lang-toggle a {
   font-size: var(--normal-font-size);
+  text-decoration: underline;
+  color: var(--text-color);
+}
+
+.notatki-link {
+  font-size: var(--small-font-size);
   text-decoration: underline;
   color: var(--text-color);
 }

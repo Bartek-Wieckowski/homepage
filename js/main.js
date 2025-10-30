@@ -8,7 +8,9 @@ import "./scroll.js";
 
 export let lang;
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
+  await fetchRepositoriesData();
+
   const body = document.querySelector("body");
   const themeToggler = document.querySelector(".theme-toggle");
   const themeTogglerSun = document.querySelector(".toggler-theme-sun");
@@ -62,8 +64,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
   footerElement.style.textAlign = "center";
   footerElement.textContent = "© theBart " + currentYear;
-});
-
-document.addEventListener("DOMContentLoaded", async () => {
-  await fetchRepositoriesData();
 });

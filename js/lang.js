@@ -59,6 +59,33 @@ export const tabsTitle = {
   PL: ["Doświadczenie zawodowe", "Projekty poboczne", "Elementy edukacyjne"],
 };
 
+export const projectLabels = {
+  EN: {
+    project: "project:",
+    description: "category:",
+    technologies: "tech stack:",
+    github: "github:",
+    demo: "site:",
+    preview: "preview:",
+    site: "site:",
+    watchPreview: "watch_preview",
+    visitSite: "visit_site",
+    sourceCode: "source_code",
+  },
+  PL: {
+    project: "projekt:",
+    description: "kategoria:",
+    technologies: "technologie:",
+    github: "github:",
+    demo: "strona:",
+    preview: "zwiastun:",
+    site: "strona:",
+    watchPreview: "zobacz_zwiastun",
+    visitSite: "odwiedź_stronę",
+    sourceCode: "kod_źródłowy",
+  },
+};
+
 export const workExperienceDetails = {
   EN: [
     {

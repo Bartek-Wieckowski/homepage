@@ -1,4 +1,7 @@
 import { fetchRepositoriesData } from "./fetch.js";
+import { projectLabels } from "./lang.js";
+
+const videoCache = new Map();
 
 const paidProjects = {
   EN: [
@@ -49,7 +52,7 @@ const paidProjects = {
       demo: "https://arsthanea.vercel.app",
     },
     {
-      name: "HC Wrocław",
+      name: "HC Wroclaw",
       demo: "https://hcwroclaw.com",
     },
     {
@@ -68,43 +71,35 @@ const projectTabs = {
   PL: ["Projekty Komercyjne", "Projekty Własne"],
 };
 
-const previewTexts = {
-  EN: {
-    label: "preview:",
-    link: "watch_preview",
-    demoLabel: "site:",
-    demoLink: "visit_site",
-  },
-  PL: {
-    label: "zwiastun:",
-    link: "zobacz_zwiastun",
-    demoLabel: "strona:",
-    demoLink: "odwiedź_stronę",
-  },
-};
-
-// Universal function to get video for any project
-async function getProjectVideo(projectName, projectType = "personal") {
-  // Clean project name for file naming
+export async function getProjectVideo(
+  projectName,
+  projectType = "personal",
+  bypassCache = false
+) {
   const cleanName = projectName.toLowerCase().replace(/[^a-z0-9-]/g, "-");
-
-  // Detect if mobile or desktop based on current viewport size
   const isMobile = window.innerWidth < 768;
   const deviceSuffix = isMobile ? "-mobile" : "-desktop";
 
-  // Check for common video formats
+  if (!bypassCache) {
+    const cacheKey = `${projectName}-${projectType}-${deviceSuffix}`;
+    if (videoCache.has(cacheKey)) {
+      return videoCache.get(cacheKey);
+    }
+  }
+
   const videoFormats = ["mp4", "webm", "ogg", "mov", "avi", "mkv"];
-
-  // Determine folder based on project type
   const folder = projectType === "paid" ? "paid-projects" : "personal-projects";
+  const cacheKey = `${projectName}-${projectType}-${deviceSuffix}`;
 
-  // First try device-specific video
   for (const format of videoFormats) {
     const videoPath = `videos/${folder}/${cleanName}${deviceSuffix}.${format}`;
 
     try {
       const response = await fetch(videoPath, { method: "HEAD" });
       if (response.ok) {
+        if (!bypassCache) {
+          videoCache.set(cacheKey, videoPath);
+        }
         return videoPath;
       }
     } catch (error) {
@@ -112,13 +107,15 @@ async function getProjectVideo(projectName, projectType = "personal") {
     }
   }
 
-  // If device-specific video not found, try generic video
   for (const format of videoFormats) {
     const videoPath = `videos/${folder}/${cleanName}.${format}`;
 
     try {
       const response = await fetch(videoPath, { method: "HEAD" });
       if (response.ok) {
+        if (!bypassCache) {
+          videoCache.set(cacheKey, videoPath);
+        }
         return videoPath;
       }
     } catch (error) {
@@ -126,10 +123,12 @@ async function getProjectVideo(projectName, projectType = "personal") {
     }
   }
 
-  return null; // No video found
+  if (!bypassCache) {
+    videoCache.set(cacheKey, null);
+  }
+  return null;
 }
 
-// Function to refresh video in modal when orientation changes
 async function refreshModalVideo() {
   const modal = document.querySelector(".video-modal");
   if (!modal) return;
@@ -139,21 +138,18 @@ async function refreshModalVideo() {
 
   if (!video || !projectName) return;
 
-  // Determine project type based on current tab
   const activeTab = document.querySelector(".main-projects-tabs li.active");
   const isPaidProject =
     (activeTab && activeTab.textContent.includes("Commercial")) ||
     (activeTab && activeTab.textContent.includes("Komercyjne"));
   const projectType = isPaidProject ? "paid" : "personal";
 
-  // Get new video for current device
-  const newVideoSrc = await getProjectVideo(projectName, projectType);
+  const newVideoSrc = await getProjectVideo(projectName, projectType, true);
 
   if (newVideoSrc && newVideoSrc !== video.src) {
     video.src = newVideoSrc;
-    video.load(); // Reload video with new source
+    video.load();
 
-    // Reposition modal for new aspect ratio
     const modalContent = modal.querySelector(".video-modal-content");
     const modalRect = modalContent.getBoundingClientRect();
     const viewportWidth = window.innerWidth;
@@ -188,11 +184,7 @@ function createLoader() {
   return loader;
 }
 
-async function displayPaidProject(project, lang = "EN") {
-  // Get video for this project (paid type)
-  const videoSrc = await getProjectVideo(project.name, "paid");
-  const hasVideo = videoSrc !== null;
-
+function displayPaidProject(project, lang = "EN") {
   const template = document.createElement("article");
   template.setAttribute("class", "project swiper-slide");
   template.innerHTML = `
@@ -204,41 +196,52 @@ async function displayPaidProject(project, lang = "EN") {
     <div class="project-content">
       <i class='bx bx-briefcase project-icon'></i>
       <h3 class="project-grid project-title">
-        <span class="project-label">project:</span>
+        <span class="project-label">${projectLabels[lang].project}</span>
         <span class="project-name">${project.name}</span>
       </h3>
       <p class="project-grid">
-        <span class="project-label">${previewTexts[lang].demoLabel}</span>
-        <span><a target="_blank" rel="noopener noreferrer" href="${
-          project.demo
-        }" 
-          title="${project.name} - live site" class="project-link">&lt;${
-    previewTexts[lang].demoLink
-  }&gt;</a></span>
-      </p>
-      <p class="project-grid" style="${
-        !hasVideo ? "opacity: 0; visibility: hidden" : ""
-      }">
-        <span class="project-label">${previewTexts[lang].label}</span>
-        <span><a href="javascript:;" 
-          title="${
-            project.name
-          } - preview" class="project-link project-preview-link" 
-          data-video="${videoSrc || ""}" data-project="${project.name}">&lt;${
-    previewTexts[lang].link
-  }&gt;</a></span>
+        <span class="project-label">${projectLabels[lang].demo}</span>
+        <span><a target="_blank" rel="noopener noreferrer" href="${project.demo}" 
+          title="${project.name} - live site" class="project-link">&lt;${projectLabels[lang].visitSite}&gt;</a></span>
       </p>
     </div>
   `;
+
+  getProjectVideo(project.name, "paid").then((videoSrc) => {
+    if (videoSrc) {
+      const previewHTML = `<p class="project-grid project-preview-grid">
+        <span class="project-label">${projectLabels[lang].preview}</span>
+        <span><a href="javascript:;" 
+          title="${project.name} - preview" class="project-link project-preview-link" 
+          data-video="${videoSrc}" data-project="${project.name}">&lt;${projectLabels[lang].watchPreview}&gt;</a></span>
+      </p>`;
+
+      const projectContent = template.querySelector(".project-content");
+      if (projectContent) {
+        const previewDiv = document.createElement("div");
+        previewDiv.innerHTML = previewHTML;
+        projectContent.appendChild(previewDiv.firstChild);
+      }
+    }
+  });
+
   return template;
 }
 
-async function displayPersonalProject(repo, lang = "EN") {
-  const { description, homepage, html_url, name } = repo;
+function displayPersonalProject(repo, lang = "EN") {
+  const { description, homepage, html_url, name, topics = [] } = repo;
 
-  // Get video for this project (personal type)
-  let videoSrc = await getProjectVideo(name, "personal");
-  let hasVideo = videoSrc !== null;
+  const topicsHTML =
+    topics && topics.length > 0
+      ? `<p class="project-grid project-topics-grid project-topics-grid-tech">
+        <span class="project-label">${projectLabels[lang].technologies}</span>
+        <span class="project-topics">
+          ${topics
+            .map((topic) => `<span class="project-topic">${topic}</span>`)
+            .join("")}
+        </span>
+      </p>`
+      : "";
 
   let template = document.createElement("article");
   template.setAttribute("class", "project swiper-slide");
@@ -251,31 +254,52 @@ async function displayPersonalProject(repo, lang = "EN") {
     <div class="project-content">
       <i class='bx bxl-github project-icon'></i>
       <h3 class="project-grid project-title">
-        <span class="project-label">project:</span><span class="project-name">${name}</span>
+        <span class="project-label">${projectLabels[lang].project}</span><span class="project-name">${name}</span>
       </h3>
-      <p class="project-grid"><span class="project-label">description:</span><span class="project-label--description">${description}</span></p>
+      <p class="project-grid"><span class="project-label">${projectLabels[lang].description}</span><span class="project-label--description">${description}</span></p>
+      ${topicsHTML}
        <p class="project-grid"><span class="project-label">github:</span><span><a target="_blank" rel="noopener noreferrer" href="${html_url}"
-        title="${name} - code" class="project-link">&lt;source_code&gt;</a></span></p>
-      <p class="project-grid" style="${
-        homepage === "" ? "opacity: 0; visibility: hidden" : ""
-      }"><span class="project-label">${
-    previewTexts[lang].demoLabel
-  }</span><span><a target="_blank" rel="noopener noreferrer" href="${homepage}"
-        title="${name} - live site" class="project-link">&lt;${
-    previewTexts[lang].demoLink
-  }&gt;</a></span></p>
-      <p class="project-grid" style="${
-        !hasVideo ? "opacity: 0; visibility: hidden" : ""
-      }"><span class="project-label">${
-    previewTexts[lang].label
-  }</span><span><a href="javascript:;" 
-        title="${name} - preview" class="project-link project-preview-link" 
-        data-video="${videoSrc}" data-project="${name}">&lt;${
-    previewTexts[lang].link
-  }&gt;</a></span></p>
-     
+        title="${name} - code" class="project-link">&lt;${projectLabels[lang].sourceCode}&gt;</a></span></p>
     </div>
   `;
+
+  Promise.all([
+    getProjectVideo(name, "personal"),
+    Promise.resolve(homepage),
+  ]).then(([videoSrc, homePage]) => {
+    const projectContent = template.querySelector(".project-content");
+    if (!projectContent) return;
+
+    const allGrids = projectContent.querySelectorAll(".project-grid");
+    const githubLine = allGrids[allGrids.length - 1];
+    if (!githubLine) return;
+
+    if (homePage && homePage !== "") {
+      const demoHTML = `<p class="project-grid">
+        <span class="project-label">${projectLabels[lang].demo}</span>
+        <span><a target="_blank" rel="noopener noreferrer" href="${homePage}"
+          title="${name} - live site" class="project-link">&lt;${projectLabels[lang].visitSite}&gt;</a></span>
+      </p>`;
+
+      const demoDiv = document.createElement("div");
+      demoDiv.innerHTML = demoHTML;
+      projectContent.insertBefore(demoDiv.firstChild, githubLine.nextSibling);
+    }
+
+    if (videoSrc) {
+      const previewHTML = `<p class="project-grid project-preview-grid">
+        <span class="project-label">${projectLabels[lang].preview}</span>
+        <span><a href="javascript:;" 
+          title="${name} - preview" class="project-link project-preview-link" 
+          data-video="${videoSrc}" data-project="${name}">&lt;${projectLabels[lang].watchPreview}&gt;</a></span>
+      </p>`;
+
+      const previewDiv = document.createElement("div");
+      previewDiv.innerHTML = previewHTML;
+      projectContent.appendChild(previewDiv.firstChild);
+    }
+  });
+
   return template;
 }
 
@@ -335,7 +359,7 @@ async function activateProjectTab(index, lang) {
       swiperPagination.className = "swiper-pagination";
 
       for (const project of paidProjects[lang]) {
-        const slide = await displayPaidProject(project, lang);
+        const slide = displayPaidProject(project, lang);
         swiperWrapper.appendChild(slide);
       }
       swiperContainer.appendChild(swiperWrapper);
@@ -373,7 +397,7 @@ async function activateProjectTab(index, lang) {
       }
     }, 300);
   } else {
-    (async () => {
+    setTimeout(async () => {
       try {
         const repositoriesData = await fetchRepositoriesData();
 
@@ -404,7 +428,7 @@ async function activateProjectTab(index, lang) {
         swiperPagination.className = "swiper-pagination";
 
         for (const repo of filteredRepos) {
-          const slide = await displayPersonalProject(repo, lang);
+          const slide = displayPersonalProject(repo, lang);
           swiperWrapper.appendChild(slide);
         }
         swiperContainer.appendChild(swiperWrapper);
@@ -444,17 +468,15 @@ async function activateProjectTab(index, lang) {
         console.error("Error loading personal projects:", error);
         contentContainer.appendChild(loader);
       }
-    })();
+    }, 300);
   }
 }
 
-// Modal functionality
 function createVideoModal() {
   const isMobile = window.innerWidth < 768;
   const modal = document.createElement("div");
   modal.className = "video-modal";
 
-  // Always show close button on mobile, never on desktop
   const closeButton = isMobile
     ? `<button class="video-modal-close" aria-label="Close modal">&times;</button>`
     : "";
@@ -466,7 +488,7 @@ function createVideoModal() {
         ${closeButton}
       </div>
       <div class="video-modal-body">
-        <video class="video-modal-video" controls autoplay muted loop>
+        <video class="video-modal-video" autoplay muted loop playsinline>
           <source src="" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -477,7 +499,6 @@ function createVideoModal() {
 }
 
 function showVideoModal(videoSrc, projectName, mouseX, mouseY) {
-  // Remove existing modal if any
   const existingModal = document.querySelector(".video-modal");
   if (existingModal) {
     existingModal.remove();
@@ -486,20 +507,27 @@ function showVideoModal(videoSrc, projectName, mouseX, mouseY) {
   const modal = createVideoModal();
   document.body.appendChild(modal);
 
-  // Set video source and project name
   const video = modal.querySelector(".video-modal-video");
   const title = modal.querySelector(".video-modal-title");
 
   title.textContent = projectName;
 
-  // Set video source (local files only)
   video.innerHTML = `
     <source src="${videoSrc}" type="video/mp4">
     Your browser does not support the video tag.
   `;
   video.src = videoSrc;
 
-  // Position modal near mouse cursor
+  // Set playback rate to 2x
+  video.playbackRate = 2;
+
+  video.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+    return false;
+  });
+
+  video.setAttribute("disablePictureInPicture", "true");
+
   const modalContent = modal.querySelector(".video-modal-content");
   const modalRect = modalContent.getBoundingClientRect();
   const viewportWidth = window.innerWidth;
@@ -509,23 +537,19 @@ function showVideoModal(videoSrc, projectName, mouseX, mouseY) {
   let left, top;
 
   if (isMobile) {
-    // Mobile: center the modal and position it higher to avoid bottom cutoff
     left = (viewportWidth - modalRect.width) / 2;
     top = Math.min(
       mouseY - modalRect.height - 20,
       viewportHeight - modalRect.height - 20
     );
 
-    // Ensure modal is not too high
     if (top < 20) {
       top = 20;
     }
   } else {
-    // Desktop: position near cursor
     left = mouseX + 20;
     top = mouseY - 20;
 
-    // Adjust if modal would go off screen
     if (left + modalRect.width > viewportWidth) {
       left = mouseX - modalRect.width - 20;
     }
@@ -539,12 +563,10 @@ function showVideoModal(videoSrc, projectName, mouseX, mouseY) {
   modal.style.left = left + "px";
   modal.style.top = top + "px";
 
-  // Show modal with animation
   setTimeout(() => {
     modal.classList.add("show");
   }, 10);
 
-  // Add close button functionality for mobile
   const closeBtn = modal.querySelector(".video-modal-close");
   if (closeBtn) {
     closeBtn.addEventListener("click", () => {
@@ -552,7 +574,6 @@ function showVideoModal(videoSrc, projectName, mouseX, mouseY) {
     });
   }
 
-  // Add Escape key functionality for mobile
   if (isMobile) {
     const handleEscape = (e) => {
       if (e.key === "Escape") {
@@ -564,24 +585,21 @@ function showVideoModal(videoSrc, projectName, mouseX, mouseY) {
   }
 }
 
-// Add event listeners for preview links
 function addPreviewEventListeners() {
   let hoverTimeout;
   let closeTimeout;
   const isMobile = window.innerWidth < 768;
 
-  // Desktop hover behavior
   if (!isMobile) {
     document.addEventListener(
       "mouseenter",
       (e) => {
-        if (e.target.classList.contains("project-preview-link")) {
+        if (e.target?.classList?.contains("project-preview-link")) {
           clearTimeout(closeTimeout);
 
           const videoSrc = e.target.getAttribute("data-video");
           const projectName = e.target.getAttribute("data-project");
 
-          // Add small delay to prevent accidental opening
           hoverTimeout = setTimeout(() => {
             showVideoModal(videoSrc, projectName, e.clientX, e.clientY);
           }, 200);
@@ -590,14 +608,12 @@ function addPreviewEventListeners() {
       true
     );
 
-    // Desktop hover out behavior
     document.addEventListener(
       "mouseleave",
       (e) => {
-        if (e.target.classList.contains("project-preview-link")) {
+        if (e.target?.classList?.contains("project-preview-link")) {
           clearTimeout(hoverTimeout);
 
-          // Close modal after a short delay
           closeTimeout = setTimeout(() => {
             closeCurrentModal();
           }, 500);
@@ -606,22 +622,20 @@ function addPreviewEventListeners() {
       true
     );
 
-    // Keep modal open when hovering over it (desktop)
     document.addEventListener(
       "mouseenter",
       (e) => {
-        if (e.target.closest(".video-modal")) {
+        if (e.target && e.target.closest && e.target.closest(".video-modal")) {
           clearTimeout(closeTimeout);
         }
       },
       true
     );
 
-    // Close modal when leaving modal area (desktop)
     document.addEventListener(
       "mouseleave",
       (e) => {
-        if (e.target.closest(".video-modal")) {
+        if (e.target && e.target.closest && e.target.closest(".video-modal")) {
           closeTimeout = setTimeout(() => {
             closeCurrentModal();
           }, 300);
@@ -630,11 +644,10 @@ function addPreviewEventListeners() {
       true
     );
 
-    // Additional safety: prevent modal from closing when moving within modal
     document.addEventListener(
       "mousemove",
       (e) => {
-        if (e.target.closest(".video-modal")) {
+        if (e.target && e.target.closest && e.target.closest(".video-modal")) {
           clearTimeout(closeTimeout);
         }
       },
@@ -642,12 +655,11 @@ function addPreviewEventListeners() {
     );
   }
 
-  // Mobile click behavior
   if (isMobile) {
     document.addEventListener(
       "click",
       (e) => {
-        if (e.target.classList.contains("project-preview-link")) {
+        if (e.target?.classList?.contains("project-preview-link")) {
           e.preventDefault();
 
           const videoSrc = e.target.getAttribute("data-video");
@@ -676,14 +688,12 @@ function closeCurrentModal() {
   }
 }
 
-// Initialize preview functionality when DOM is ready
 if (document.readyState === "loading") {
   document.addEventListener("DOMContentLoaded", addPreviewEventListeners);
 } else {
   addPreviewEventListeners();
 }
 
-// Add resize listener to refresh video when orientation changes
 let resizeTimeout;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimeout);

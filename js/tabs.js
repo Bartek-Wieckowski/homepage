@@ -1,56 +1,56 @@
-import { filterAndDisplayRepositories } from './fetch.js';
-import { workExperienceDetails } from './lang.js';
-import { renderWorkExpText } from './workExp.js';
+import { filterAndDisplayRepositories } from "./fetch.js";
+import { workExperienceDetails } from "./lang.js";
+import { renderWorkExpText } from "./workExp.js";
 
 export function renderTabs(lang, tabsContent) {
-  const wrapper = document.querySelector('.tabs-wrapper');
-  const tabContent = document.querySelector('.tab-content');
-  const tabContentWorkExp = document.querySelector('.tab-content-work-exp');
-  wrapper.innerHTML = '';
-  tabContent.innerHTML = '';
-  tabContentWorkExp.innerHTML = '';
+  const wrapper = document.querySelector(".tabs-wrapper");
+  const tabContent = document.querySelector(".tab-content");
+  const tabContentWorkExp = document.querySelector(".tab-content-work-exp");
+  wrapper.innerHTML = "";
+  tabContent.innerHTML = "";
+  tabContentWorkExp.innerHTML = "";
 
   tabsContent[lang].forEach((desc, index) => {
-    const li = document.createElement('li');
+    const li = document.createElement("li");
     li.textContent = desc;
-    li.setAttribute('role', 'tab');
-    li.setAttribute('tabindex', '0');
+    li.setAttribute("role", "tab");
+    li.setAttribute("tabindex", "0");
     if (index === 0) {
-      li.classList.add('active');
-      renderWorkExpText(lang, workExperienceDetails, 'tab-content-work-exp');
+      li.classList.add("active");
+      renderWorkExpText(lang, workExperienceDetails, "tab-content-work-exp");
     }
-    li.addEventListener('click', () => {
+    li.addEventListener("click", () => {
       activateTab(index);
     });
 
-    li.addEventListener('keypress', (event) => {
-      if (event.key === 'Enter') {
+    li.addEventListener("keypress", (event) => {
+      if (event.key === "Enter") {
         activateTab(index);
       }
     });
 
     function activateTab(index) {
-      document.querySelectorAll('.tabs-wrapper li').forEach((item) => {
-        item.classList.remove('active');
+      document.querySelectorAll(".tabs-wrapper li").forEach((item) => {
+        item.classList.remove("active");
       });
-      li.classList.add('active');
-      tabContent.innerHTML = '';
-      tabContentWorkExp.innerHTML = '';
+      li.classList.add("active");
+      tabContent.innerHTML = "";
+      tabContentWorkExp.innerHTML = "";
 
       try {
         if (index === 0) {
           renderWorkExpText(
             lang,
             workExperienceDetails,
-            'tab-content-work-exp'
+            "tab-content-work-exp"
           );
         } else if (index === 1) {
-          filterAndDisplayRepositories('sideproject', 'tab-content');
+          filterAndDisplayRepositories("sideproject", "tab-content", lang);
         } else if (index === 2) {
-          filterAndDisplayRepositories('learn', 'tab-content');
+          filterAndDisplayRepositories("learn", "tab-content", lang);
         }
       } catch (error) {
-        console.error('Error fetching repositories:', error);
+        console.error("Error fetching repositories:", error);
       }
     }
 

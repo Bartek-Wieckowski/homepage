@@ -1,26 +1,22 @@
+// ==========================================
+// GLOBALNE ZMIENNE
+// ==========================================
+
 let ASSETS_BY_ID = {};
-let fetchedNotes = [];
-let filteredNotes = [];
-let allCategories = [];
-let currentCategoryId = null;
-let currentSearchTerm = "";
 
-const searchInput = document.getElementById("search-input");
-const randomNoteButton = document.getElementById("random-note-button");
-
-searchInput.addEventListener("input", (e) => {
-  handleSearchInputChange(e.target.value, allCategories);
-});
-
-randomNoteButton.addEventListener("click", () => {
-  handleRandomNoteClick(fetchedNotes, allCategories);
-});
+// ==========================================
+// FUNKCJE FETCH
+// ==========================================
 
 async function fetchAllData() {
   try {
     const [categoriesRes, notesRes] = await Promise.all([
-      fetch(`https://thebart.usermd.net/homepage-categories`),
-      fetch(`https://thebart.usermd.net/homepage-notes`),
+      fetch(
+        `${BASE_URL}/entries?access_token=${ACCESS_TOKEN}&content_type=homepageCategories`
+      ),
+      fetch(
+        `${BASE_URL}/entries?access_token=${ACCESS_TOKEN}&content_type=homepageNotes&include=2`
+      ),
     ]);
 
     const categoriesData = await categoriesRes.json();
@@ -44,7 +40,6 @@ async function fetchAllData() {
       title: note.fields.title,
       content: note.fields.content,
       category: note.fields.category?.sys?.id,
-      datePublished: note.sys.createdAt.split("T")[0],
     }));
 
     return {
@@ -60,7 +55,7 @@ async function fetchAllData() {
 async function fetchNote(noteId) {
   try {
     const response = await fetch(
-      `https://thebart.usermd.net/homepage-notes/${noteId}`
+      `${BASE_URL}/entries/${noteId}?access_token=${ACCESS_TOKEN}`
     );
     return await response.json();
   } catch (error) {
@@ -69,91 +64,62 @@ async function fetchNote(noteId) {
   }
 }
 
-function renderCategories(categories) {
+// ==========================================
+// FUNKCJE RENDEROWANIA
+// ==========================================
+
+function groupNotesByCategory(notes, categories) {
+  const grouped = {};
+  categories.forEach((cat) => {
+    grouped[cat.id] = {
+      name: cat.name,
+      backgroundColor: cat.backgroundColor,
+      textColor: cat.textColor,
+      notes: [],
+    };
+  });
+
+  notes.forEach((note) => {
+    const categoryId = note.category;
+    if (categoryId && grouped[categoryId]) {
+      grouped[categoryId].notes.push(note);
+    }
+  });
+
+  return grouped;
+}
+
+function renderCategories(groupedData) {
   const container = document.getElementById("categories-container");
   container.innerHTML = "";
 
-  const allNotes = document.createElement("li");
-  allNotes.className = "category category-all-notes";
-  allNotes.textContent = "Wszystkie notatki";
-  allNotes.setAttribute("data-category-id", "all");
-  allNotes.addEventListener("click", () => {
-    handleCategoryClick("all", categories);
-    const allLi = container.querySelectorAll("li");
-    allLi.forEach((el) => el.classList.remove("active"));
-  });
-  container.appendChild(allNotes);
+  Object.keys(groupedData).forEach((catId) => {
+    const category = groupedData[catId];
+    const div = document.createElement("div");
+    div.className = "category";
+    div.textContent = category.name;
 
-  categories.forEach((category) => {
-    const li = document.createElement("li");
-    li.className = "category";
-    li.textContent = category.name;
-    li.setAttribute("data-category-id", category.id);
-    container.appendChild(li);
-    li.addEventListener("click", () => {
-      handleCategoryClick(category.id, categories);
-      const allLi = container.querySelectorAll("li");
-      allLi.forEach((el) => el.classList.remove("active"));
-      li.classList.add("active");
+    div.addEventListener("click", () => {
+      renderNotes(category.notes, {
+        backgroundColor: category.backgroundColor,
+        textColor: category.textColor,
+      });
     });
+
+    container.appendChild(div);
   });
 }
 
-function handleCategoryClick(categoryId, categories) {
-  if (categoryId === "all") {
-    currentCategoryId = null;
-    filteredNotes = [...fetchedNotes];
-  } else {
-    currentCategoryId = categoryId;
-    filteredNotes = fetchedNotes.filter((note) => note.category === categoryId);
-  }
-  searchInput.value = "";
-  currentSearchTerm = "";
-  renderNotes(filteredNotes, categories);
-}
-
-function handleSearchInputChange(searchTerm, categories) {
-  currentSearchTerm = searchTerm;
-
-  const notesToFilter = currentCategoryId
-    ? fetchedNotes.filter((note) => note.category === currentCategoryId)
-    : [...fetchedNotes];
-
-  if (!searchTerm) {
-    filteredNotes = notesToFilter;
-  } else {
-    filteredNotes = notesToFilter.filter((note) =>
-      note.title.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-  }
-
-  renderNotes(filteredNotes, categories);
-}
-
-function handleRandomNoteClick() {
-  if (!fetchedNotes.length) return;
-
-  const randomNote =
-    fetchedNotes[Math.floor(Math.random() * fetchedNotes.length)];
-
-  renderNotes([randomNote], allCategories);
-  searchInput.value = "";
-  currentSearchTerm = "";
-}
-
-function renderNotes(notes, categories) {
+function renderNotes(notes, categoryMeta, categoryColorsById) {
   const container = document.getElementById("notes-list");
   if (!container) return;
+
   container.innerHTML = "";
 
-  if (!notes.length) {
-    if (currentCategoryId === null) {
-      container.innerHTML =
-        '<div class="empty-state"><h2>Brak notatek</h2></div>';
-    } else {
-      container.innerHTML =
-        '<div class="empty-state"><h2>Brak notatek w tej kategorii</h2></div>';
-    }
+  if (!notes || notes.length === 0) {
+    container.innerHTML =
+      '<div class="empty-state"><h2>Brak notatek w tej kategorii</h2></div>';
+    return;
   }
 
   const grid = document.createElement("div");
@@ -163,36 +129,56 @@ function renderNotes(notes, categories) {
     const card = document.createElement("article");
     card.className = "note-card";
 
-    const category = categories.find((c) => c.id === note.category);
-    if (category) {
-      card.style.backgroundColor = category.backgroundColor;
-      card.style.color = category.textColor;
-    }
+    const bg =
+      categoryMeta?.backgroundColor ||
+      categoryColorsById?.[note.category]?.backgroundColor;
+    const color =
+      categoryMeta?.textColor || categoryColorsById?.[note.category]?.textColor;
 
-    const header = document.createElement("div");
-    header.className = "note-card-header";
+    if (bg) card.style.background = bg;
+    if (color) card.style.color = color;
 
     const title = document.createElement("h3");
     title.className = "note-card-title";
-    title.textContent = note.title;
+    title.textContent = note.title || "Bez tytułu";
 
-    const date = document.createElement("span");
-    date.className = "note-card-date";
-    date.textContent = note.datePublished || "";
+    const excerpt = document.createElement("p");
+    excerpt.className = "note-card-excerpt";
+    excerpt.textContent = getExcerptFromRichText(note.content, 160);
 
-    header.appendChild(title);
-    header.appendChild(date);
-    card.appendChild(header);
-
-    card.addEventListener("click", () => {
-      openNoteModal(note);
-    });
+    card.appendChild(title);
+    card.appendChild(excerpt);
+    card.addEventListener("click", () => openNoteModal(note));
 
     grid.appendChild(card);
   });
 
   container.appendChild(grid);
 }
+
+function getExcerptFromRichText(richText, maxLen) {
+  const text = richTextToPlainText(richText).trim();
+  if (!text) return "";
+  if (text.length <= maxLen) return text;
+  const cut = text.slice(0, maxLen);
+  const lastSpace = cut.lastIndexOf(" ");
+  return (lastSpace > 0 ? cut.slice(0, lastSpace) : cut) + "…";
+}
+
+function richTextToPlainText(node) {
+  if (!node) return "";
+  if (Array.isArray(node)) return node.map(richTextToPlainText).join("");
+  const { nodeType, content, value } = node;
+  if (nodeType === "text") return value || "";
+  if (content && Array.isArray(content)) {
+    return content.map(richTextToPlainText).join(" ").replace(/\s+/g, " ");
+  }
+  return "";
+}
+
+// ==========================================
+// MODAL Z NOTATKĄ
+// ==========================================
 
 function openNoteModal(noteFromList) {
   const overlay = document.createElement("div");
@@ -204,14 +190,15 @@ function openNoteModal(noteFromList) {
   const renderModal = (title, content) => {
     const html = convertRichTextToHTML(content);
     modal.innerHTML = `
-        <button class="modal-close" aria-label="Zamknij">×</button>
-        <div class="note-header"><h1>${title}</h1></div>
-        <div class="note-content">${html}</div>
-      `;
+      <button class="modal-close" aria-label="Zamknij">×</button>
+      <div class="note-header"><h1>${title}</h1></div>
+      <div class="note-content">${html}</div>
+    `;
 
     overlay.appendChild(modal);
     document.body.appendChild(overlay);
 
+    // Podświetlanie kodu po wyrenderowaniu
     Prism.highlightAll();
 
     const close = () => {
@@ -231,9 +218,9 @@ function openNoteModal(noteFromList) {
     document.addEventListener("keydown", onKeyDown);
   };
 
-  if (noteFromList.content) {
+  if (noteFromList?.content) {
     renderModal(noteFromList.title, noteFromList.content);
-  } else if (noteFromList.id) {
+  } else if (noteFromList?.id) {
     (async () => {
       const full = await fetchNote(noteFromList.id);
       if (!full) return;
@@ -242,12 +229,16 @@ function openNoteModal(noteFromList) {
   }
 }
 
+// ==========================================
+// KONWERSJA RICH TEXT → HTML
+// ==========================================
+
 function convertRichTextToHTML(richText) {
   if (!richText || !richText.content) return "";
   return richText.content.map((node) => convertNode(node)).join("");
 }
 
-// wykrywanie języka z formatowania ```ts / ```js / ```sql
+// --- NOWA FUNKCJA: wykrywanie języka z formatowania ```ts / ```js / ```sql
 function extractLanguageFromFencedCode(text) {
   const match = text.match(/^```(\w+)\n([\s\S]*)```$/m);
   if (!match) return { lang: null, code: text };
@@ -340,19 +331,29 @@ function convertNode(node) {
   }
 }
 
+// ==========================================
+// INICJALIZACJA
+// ==========================================
+
 async function init() {
   const data = await fetchAllData();
   if (!data) return;
 
-  fetchedNotes = data.notes;
-  filteredNotes = [...fetchedNotes];
-  allCategories = data.categories;
-  currentCategoryId = null;
-  currentSearchTerm = "";
+  const groupedData = groupNotesByCategory(data.notes, data.categories);
+  renderCategories(groupedData);
 
-  renderCategories(data.categories);
-  renderNotes(filteredNotes, data.categories);
+  const categoryColorsById = Object.keys(groupedData).reduce((acc, catId) => {
+    const c = groupedData[catId];
+    acc[catId] = {
+      backgroundColor: c.backgroundColor,
+      textColor: c.textColor,
+    };
+    return acc;
+  }, {});
 
+  renderNotes(data.notes, undefined, categoryColorsById);
+
+  // Podświetlenie kodu przy starcie
   Prism.highlightAll();
 }
 

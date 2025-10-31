@@ -9,24 +9,70 @@
       href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/prismjs@1/themes/prism-tomorrow.css"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="css/notatki/notes.css" />
   </head>
 
   <body>
     <div class="container">
       <aside id="sidebar">
-        <a href="index.html" class="back-link">⬅️ Wróć do strony głównej</a>
-        <h2>📚 Kategorie</h2>
-        <div id="categories-container">
-          <div class="loading">Ładowanie kategorii</div>
-        </div>
+        <a href="index.html" class="back-link"
+          ><i class="bx bx-arrow-back"></i>Wróć do strony głównej</a
+        >
+        <ul id="categories-container">
+          <div class="loader"></div>
+        </ul>
       </aside>
 
       <main>
+        <div class="user-actions">
+          <input type="text" id="search-input" placeholder="Szukaj notatki" />
+          <button id="random-note-button">
+            <svg
+              class="dice-icon"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <rect
+                x="3"
+                y="3"
+                width="18"
+                height="18"
+                rx="3"
+                stroke="currentColor"
+                stroke-width="2"
+                fill="none"
+              />
+              <circle cx="8" cy="8" r="1.5" fill="currentColor" />
+              <circle cx="16" cy="8" r="1.5" fill="currentColor" />
+              <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+              <circle cx="8" cy="16" r="1.5" fill="currentColor" />
+              <circle cx="16" cy="16" r="1.5" fill="currentColor" />
+            </svg>
+            Losuj
+          </button>
+        </div>
         <div id="notes-list"></div>
       </main>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-javascript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-typescript.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-jsx.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-tsx.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-sql.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-css.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-json.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/components/prism-bash.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/components/prism-html.min.js"></script>
     <script src="js/notatki/notes.js"></script>
   </body>
 </html>

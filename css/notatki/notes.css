@@ -12,19 +12,19 @@ body {
 
 .container {
   display: flex;
+  flex-direction: column;
   min-height: 100vh;
 }
 
-/* ASIDE - Kategorie */
 aside {
-  width: 280px;
+  width: 100%;
   background: #2c3e50;
   color: white;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
   overflow-y: auto;
 }
 
-aside h2 {
+aside h1 {
   font-size: 1.5rem;
   margin-bottom: 1.5rem;
   padding-bottom: 0.5rem;
@@ -35,23 +35,65 @@ aside h2 {
   display: block;
   margin-bottom: 1.5rem;
   text-decoration: none;
-  color: #3498db;
-}
-
-.category {
-  margin-bottom: 1.5rem;
-}
-
-.category h3 {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  color: #3498db;
-  cursor: pointer;
+  color: tomato;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   transition: color 0.3s;
 }
 
-.category h3:hover {
-  color: #5dade2;
+.back-link i {
+  color: white;
+}
+
+.back-link:hover {
+  color: white;
+}
+
+.back-link:hover i {
+  color: tomato;
+}
+
+#categories-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  overflow-x: auto;
+}
+
+.category {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  list-style: none;
+}
+
+.category.active {
+  animation: pulse 1s infinite;
+  color: tomato;
+}
+
+@keyframes pulse {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.category:hover {
+  background-color: #3498db;
+  border-radius: 0.5rem;
+}
+
+.category-all-notes {
+  background-color: teal;
+  border-radius: 0.5rem;
 }
 
 .note-list {
@@ -78,18 +120,14 @@ aside h2 {
   font-weight: bold;
 }
 
-/* MAIN - Treść notatki */
 main {
   flex: 1;
-  padding: 3rem;
-  max-width: 900px;
-  margin: 0 auto;
+  padding: 1.5rem;
 }
 
-/* Notes grid in main */
 .notes-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 1.25rem;
 }
 
@@ -101,6 +139,11 @@ main {
   transition: transform 0.15s ease, box-shadow 0.15s ease;
   background: #ffffff;
   color: #2c3e50;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 18.75rem;
+  width: 100%;
 }
 
 .note-card:hover {
@@ -108,9 +151,25 @@ main {
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
 }
 
+.note-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
 .note-card-title {
   font-size: 1.1rem;
-  margin-bottom: 0.4rem;
+  margin: 0;
+  flex: 1;
+}
+
+.note-card-date {
+  font-size: 0.85rem;
+  opacity: 0.7;
+  white-space: nowrap;
+  margin: 0;
 }
 
 .note-card-excerpt {
@@ -123,7 +182,7 @@ main {
 }
 
 .note-header h1 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   color: #2c3e50;
   margin-bottom: 0.5rem;
 }
@@ -134,62 +193,24 @@ main {
 }
 
 .note-content {
-  background: white;
+  background: #2d2d2d;
   padding: 2rem;
   border-radius: 8px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   line-height: 1.8;
+  color: white;
 }
 
-.note-content h2 {
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-  color: #2c3e50;
-}
-
-.note-content h3 {
-  margin-top: 1.2rem;
-  margin-bottom: 0.8rem;
-  color: #34495e;
-}
-
-.note-content p {
-  margin-bottom: 1rem;
-}
-
-.note-content code {
-  background: #f8f9fa;
-  padding: 0.2rem 0.4rem;
-  border-radius: 3px;
-  font-family: "Courier New", monospace;
-  color: #e74c3c;
-}
-
-.note-content pre {
-  background: #2c3e50;
-  color: #ecf0f1;
-  padding: 1rem;
-  border-radius: 5px;
-  overflow-x: auto;
-  margin: 1rem 0;
-}
-
-/* Obrazy i figury wewnątrz treści notatki */
 .note-content img {
   max-width: 100%;
   height: auto;
   display: block;
   border-radius: 6px;
+  margin-inline: auto;
 }
 
 .note-content figure {
   margin: 1.25rem 0;
-}
-
-.note-content figcaption {
-  font-size: 0.85rem;
-  color: #7f8c8d;
-  margin-top: 0.4rem;
 }
 
 .note-content ul,
@@ -202,30 +223,29 @@ main {
   margin-bottom: 0.5rem;
 }
 
-/* Loading & Empty states */
-.loading,
 .empty-state {
   text-align: center;
-  padding: 3rem;
-  color: #7f8c8d;
+  padding: 2rem;
+  border-radius: 8px;
+  color: #fff;
 }
 
-.loading::after {
-  content: "...";
-  animation: dots 1.5s steps(3, end) infinite;
+.empty-state h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
 }
 
-@keyframes dots {
-  0%,
-  20% {
-    content: ".";
-  }
-  40% {
-    content: "..";
-  }
-  60%,
+.loader {
+  width: 120px;
+  height: 20px;
+  -webkit-mask: linear-gradient(90deg, #000 70%, #0000 0) left/20% 100%;
+  background: linear-gradient(#000 0 0) left -25% top 0 /20% 100% no-repeat #ddd;
+  animation: l7 1s infinite steps(6);
+}
+
+@keyframes l7 {
   100% {
-    content: "...";
+    background-position: right -25% top 0;
   }
 }
 
@@ -249,7 +269,7 @@ main {
   overflow-y: auto;
   border-radius: 10px;
   position: relative;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .modal-close {
@@ -264,32 +284,143 @@ main {
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
-  .modal {
-    padding: 1rem;
+.user-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+#search-input {
+  width: 100%;
+  max-width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 2px solid #34495e;
+  border-radius: 8px;
+  background: #ffffff;
+  color: #2c3e50;
+  transition: border-color 0.2s ease;
+  outline: none;
+}
+
+#search-input:focus {
+  border-color: #3498db;
+}
+
+#search-input::placeholder {
+  color: #95a5a6;
+}
+
+#random-note-button {
+  width: 100%;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #fff;
+  background: transparent;
+  border: 2px solid #3498db;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.dice-icon {
+  width: 24px;
+  height: 24px;
+  color: #3498db;
+  transition: transform 0.3s ease;
+}
+
+#random-note-button:hover {
+  background: #3498db;
+  color: #2c3e50;
+}
+
+#random-note-button:hover .dice-icon {
+  color: #ffffff;
+  animation: diceRoll 0.6s ease-in-out;
+}
+
+#random-note-button:active {
+  background: #2980b9;
+  border-color: #2980b9;
+}
+
+@keyframes diceRoll {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  25% {
+    transform: rotate(90deg) translateY(-5px);
+  }
+  50% {
+    transform: rotate(180deg) translateY(0);
+  }
+  75% {
+    transform: rotate(270deg) translateY(-5px);
+  }
+  100% {
+    transform: rotate(360deg) translateY(0);
   }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
+/* Responsive - Desktop */
+@media (min-width: 768px) {
   aside {
-    width: 100%;
-    padding: 1.5rem;
+    width: 17.5rem;
+    padding: 2rem 1.5rem;
   }
 
   main {
-    padding: 1.5rem;
+    padding: 3rem;
+  }
+
+  .container {
+    flex-direction: row;
+  }
+
+  #categories-container {
+    flex-direction: column;
   }
 
   .note-header h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
   }
 
   .notes-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(25rem, 1fr));
+    justify-items: start;
+  }
+
+  .modal {
+    padding: 2rem;
+  }
+
+  .user-actions {
+    flex-direction: row;
+    gap: 1rem;
+  }
+
+  #search-input {
+    width: auto;
+    max-width: 400px;
+    padding: 0.875rem 1.25rem;
+    font-size: 1rem;
+  }
+
+  #random-note-button {
+    width: auto;
+    padding: 0.875rem 2rem;
+    white-space: nowrap;
+  }
+
+  .dice-icon {
+    width: 20px;
+    height: 20px;
   }
 }
